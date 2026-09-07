@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .body {
+            text-align: left;
+        }
+
+        .button{
+            align-self: self-end;
+        }
+        .button a{
+            color: white; /* Cambia el color del texto del botón a blanco */
+            text-decoration: none; /* Elimina la línea debajo del enlace */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div> 
+        <div class="second-text">
+            <h1 class="encabezado1">¿QUÉ ES UNA PLANARIA?</h1>
+            <p class="body">Las <b>planarias</b> son pequeños <b>gusanos</b> que viven en el <b>agua</b> y suelos <b>húmedos</b>. Aunque sean simples, tienen un <b>sistema nervioso</b> centralizado y una estructura básica de <b>órganos</b>, similar al <b>cuerpo humano</b>.</p>
+            <p class="body">Estas características les permiten responder de manera <b>similar</b> a los <b>humanos</b> ante ciertos <b>estímulos</b>.</p>
+        </div>
+        <div class="options-container" >
+            <img src="Recursos\Preguntas\Explicacionplanarias.jpeg" style="width: 30%;">
+        </div>
+        <div class="button-container" >
+            <!-- Botón "ATRÁS" -->
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <!-- Botón "COMENZAR" -->
+            <button class="button" style="align-self:flex-start;"> <a href="3_RazonPretest.html">COMENZAR</a></button>
+        </div>
+    </div>
+
+    <script>
+        // Función para ir a la página anterior en el historial del navegador
+        function goToPreviousPage() {
+            window.history.back(); // Retrocede a la página anterior
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+    
+    <div class="container">  
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div>
+        <div class="container-image-text">
+            <img class= "question-image" src="Recursos\Preguntas\VideosPendulo-v3\peso-igual.jpg">
+            <div class="question-container">
+                <div class="question-text">
+                    <p class="body" id="recordatorio" >Si dos péndulos tienen el <b>mismo peso</b> y la <b>misma longitud</b>, pero el azul <b>cae de un ángulo más alto</b> que el rojo, ¿cómo es el periodo del péndulo azul en comparación con el del rojo?</p> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="options-container">
+            <div class="option" id="opt1" onclick="selectOption('opt1', 'r2', 'Más lento')">
+                <video src="Recursos\Preguntas\VideosPendulo-v3\P2-Lento.mp4" controls></video>                
+                <input type="radio" name="option" id="radio1" style="pointer-events: none;">
+                <p class="body">Más lento</p>
+            </div>
+            
+            <div class="option" id="opt2" onclick="selectOption('opt2', 'r2', 'Igual')">
+                <video src="Recursos\Preguntas\VideosPendulo-v3\P2-Igual.mp4" controls></video>                
+                <input type="radio" name="option" id="radio2" style="pointer-events: none;">
+                <p class="body">Igual</p>
+            </div>
+            
+            <div class="option" id="opt3" onclick="selectOption('opt3', 'r2', 'Menos lento')">
+                <video src="Recursos\Preguntas\VideosPendulo-v3\P2-Rapido.mp4" controls></video>                
+                <input type="radio" name="option" id="radio3" style="pointer-events: none;">
+                <p class="body">Menos lento</p>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" min="1" id="progreso" class="slider" disabled>
+            <p id="progreso-texto" class="body"></p>
+        </div>
+
+        <div class="button-container">
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <button class="button" id="nextButton" disabled onclick="goToNextPage()">SIGUIENTE</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. NUEVA FUNCIÓN PARA SELECCIONAR (Igual que en Pregunta 1)
+        function selectOption(optionId, pregunta, respuesta) {
+            // Remueve la clase 'selected' de todos los contenedores .option
+            var options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Agrega la clase 'selected' a la caja clicada
+            var selectedOption = document.getElementById(optionId);
+            selectedOption.classList.add('selected');
+            
+            // Marca el radio button interior
+            var rb = selectedOption.querySelector('input[type="radio"]');
+            if (rb) rb.checked = true;
+
+            // Habilita el botón de Siguiente
+            document.getElementById('nextButton').disabled = false;
+
+            // Almacena la respuesta en sessionStorage
+            sessionStorage.setItem(pregunta, respuesta);
+            sessionStorage.setItem(pregunta + "_id", optionId); // Guarda el ID de la caja
+
+        }
+
+        // 2. FUNCIÓN PARA AVANZAR CORREGIDA (.option.selected)
+        function goToNextPage() {
+            var selectedOption = document.querySelector('.option.selected');
+
+            if (selectedOption) {
+                window.location.href = "6_Pregunta3.html";
+            } else {
+                alert("Por favor, selecciona una opción antes de continuar.");
+            }
+        }
+
+        function goToPreviousPage() {
+            window.location.href = "4_Pregunta1.html";
+        }
+
+        // 3. ONLOAD CORREGIDO PARA RESTAURAR VISUALMENTE
+        window.onload = function() {
+            // ¡IMPORTANTE! Aquí usamos 'r2' para la pregunta 2
+            const clavePregunta = 'r2'; 
+            const savedId = sessionStorage.getItem(clavePregunta + "_id");
+
+            // Si hay una respuesta guardada, restaura el borde verde y el check
+            if (savedId) {
+                const optionToRestore = document.getElementById(savedId);
+                if (optionToRestore) {
+                    optionToRestore.classList.add('selected');
+                    optionToRestore.querySelector('input[type="radio"]').checked = true;
+                    document.getElementById('nextButton').disabled = false;
+                }
+            }
+
+            // Variables de la barra de progreso (Para la pregunta 2)
+            const preguntaActual = 2; 
+            const progresoaActual = preguntaActual -1; 
+            const totalPreguntas = 5;
+
+            const slider = document.getElementById('progreso');
+            const texto = document.getElementById('progreso-texto');
+
+            if(slider && texto) {
+                slider.max = totalPreguntas;
+                slider.value = preguntaActual;
+                const porcentaje = (progresoaActual / totalPreguntas) * 100;
+                slider.style.background = `linear-gradient(to right, #4CAF50 ${porcentaje}%, #ddd ${porcentaje}%)`;
+                texto.textContent = `Pregunta ${preguntaActual} de ${totalPreguntas}`;
+            }
+        };
+    </script>
+</body>
+</html>
