@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio - Laboratorios Remotos</title>
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="style_index.css">
+  <link rel="stylesheet" href="ChatIA/chat.css">
+  <script src="ChatIA/chat.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+
+  <!--Bloque para rastreo de interacciones-->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wfaoqmmw8z");
+  </script>
+</head>
+<body id="it6b">
+
+  <!-- ==================== HEADER ==================== -->
+  <div id="iw4lcc" class="navbar">
+    <div data-gjs="navbar" id="ic2h68" class="navbar-cnt">
+
+      <!-- Logo -->
+      <a href="/" id="if02rl" class="navbar-brand">
+        <img id="ihwzu6" src="imagenes/logo.png" alt="Logo">
+      </a>
+
+      <!-- Botón navegador movil-->
+      <div id="ivhcul" class="navbar-menu-toggle" onclick="toggleMenu()">
+        <svg id="icono-hamburguesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25"><path fill="currentColor" d="M16 224h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m416 192H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16m3.17-384H172.83A12.82 12.82 0 0 0 160 44.83v38.34A12.82 12.82 0 0 0 172.83 96h262.34A12.82 12.82 0 0 0 448 83.17V44.83A12.82 12.82 0 0 0 435.17 32m0 256H172.83A12.82 12.82 0 0 0 160 300.83v38.34A12.82 12.82 0 0 0 172.83 352h262.34A12.82 12.82 0 0 0 448 339.17v-38.34A12.82 12.82 0 0 0 435.17 288"></path></svg>
+        <svg id="icono-cerrar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="25" height="25" style="display: none;"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      </div>
+
+      <!-- Menú de navegación -->
+      <div data-gjs="navbar-items" id="igyjaw" class="navbar-items-c">
+        <nav id="ik60dj" class="navbar-menu-nav">
+
+          <!-- ENLACES MÓVIL -->
+          <a id="inicio-mov" href="index.html" class="nav-link-movil">Inicio</a>
+          <a id="escuelas-mov" href="mapa.html" class="nav-link-movil">Escuelas</a>
+          <a id="noticias-mov" href="noticias.html" class="nav-link-movil">Noticias</a>
+          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Recursos educativos</a>
+          <a id="cuestionarios-mov" href="Cuestionarios.html" class="nav-link-movil">Cuestionarios</a>
+
+          <!-- ENLACES ESCRITORIO -->
+          <div data-type-role="flex-row" id="ihn2tg" class="gjs-plg-flex-row">
+            <div data-type-role="flex-column" id="if5sw5" class="gjs-plg-flex-column">
+              <a id="inicio-desk" href="index.html"class="nav-link-desk">Inicio</a>
+              <a id="escuelas-desk" href="mapa.html" class="nav-link-desk">Escuelas</a>
+              <a id="noticias-desk" href="noticias.html"class="nav-link-desk">Noticias</a>
+              <a id="videos-desk" href="Videos.html" class="nav-link-desk">Recursos educativos</a>
+              <a id="cuestionarios-desk" href="Cuestionarios.html" class="nav-link-desk">Cuestionarios</a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SWIPER  ==================== -->
+<section aria-roledescription="carousel" aria-label="Featured Highlights" class="swiper-section" id="i7or7">
+ <div class="swiper-wrapper" >
+    <div class="swiper-frame" >
+      <div class="top-gradient" id="iiag4"></div>
+      
+      <style>
+        /* ESTILOS PARA LOS BOTONES VERDES CON EFECTO HOVER */
+        .primary-cta {
+          background-color: #408d36 !important; /* Verde del proyecto */
+          color: white !important; /* Letra blanca */
+          text-decoration: none !important; /* Quitar subrayados */
+          transition: transform 0.3s ease, background-color 0.3s ease !important; /* Animación suave */
+          display: inline-flex !important;
+          align-items: center !important;
+        }
+        
+        .primary-cta:hover {
+          transform: scale(1.06) !important; /* Crece un 6% al pasar el ratón */
+          background-color: #35772c !important; /* Verde ligeramente más oscuro al hacer hover */
+        }
+
+        /* ESTILOS PARA PANTALLAS PEQUEÑAS (Móvil) */
+        @media (max-width: 768px) {
+          .slide-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            text-align: center !important;
+            padding: 20px !important;
+            gap: 20px !important;
+          }
+          .slide-text-column, .slide-image-column {
+            width: 100% !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .slide-ctas {
+            justify-content: center !important;
+            width: 100% !important;
+          }
+          .slide-image {
+            max-width: 85% !important;
+            height: auto !important;
+            margin-top: 15px !important;
+          }
+          #slide-video {
+            padding: 15px !important;
+          }
+        }
+      </style>
+
+      <div id="slides-track" role="group" class="slides-track">
+        
+        <article aria-label="Slide 1" class="slide-item" id="i7cgkl">
+          <div class="slide-grid" id="iicopu">
+            <div class="slide-text-column" id="i9lnv8">
+              <div class="slide-text-inner" id="im4qxj">
+                <h1 class="gjs-t-h1 slide-title">
+                  PROYECTO R3
+                </h1>
+                <h2 class="gjs-t-h2 slide-title2" id="iacqx3">
+                  RURAL, REMOTO Y REAL
+                </h2>
+                <p class="slide-summary" id="iml7kj">
+                  Tiene como objetivo fomentar la práctica científico-tecnológica real en escuelas y centros de formación rurales. Los alumnos tendrán acceso a experimentos remotos vía Internet. 
+                </p>
+                <div class="slide-ctas" id="ia00c2">
+                  <a href="https://proyecto-r3.labsland.com/" target="_blank" class="gjs-t-button primary-cta" id="inh6me">
+                    Descubrir Experimentos Remotos
+                    <img src="https://api.iconify.design/lucide-arrow-right.svg?color=white" alt="" class="cta-icon" id="ir311f" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="slide-image-column" id="izfxmo">
+              <div class="image-wrapper" id="ivi04g">
+                <img src="imagenes/logo2.png" alt="Logo Proyecto R3" loading="eager" class="slide-image" id="imj2sh" style="margin-top: 60px;" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article aria-label="Slide 2" class="slide-item" id="slide-video" style="display: flex; justify-content: center; align-items: center; padding: 5%; width: 100%; height: 100%; box-sizing: border-box;">
+            <div class="video-wrapper" style="width: 80%; max-width: 900px; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+             <iframe src="https://www.youtube.com/embed/ZwJZgJQdqB8" 
+                  title="YouTube video player" 
+                  frameborder="0" 
+                  style="width: 100%; height: 100%;"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+            </iframe>
+            </div>
+        </article>
+
+        <article aria-label="Slide 3" class="slide-item" id="slide-libro">
+          <div class="slide-grid">
+            <div class="slide-text-column">
+              <div class="slide-text-inner">
+                <h1 class="gjs-t-h1 slide-title">
+                  EL LIBRO DEL PROYECTO
+                </h1>
+                <h2 class="gjs-t-h2 slide-title2">
+                  MATERIALES 2024-2025
+                </h2>
+                <p class="slide-summary">
+                  En el libro del curso 2024-2025 se recogen todos los recursos creados por los docentes para utilizar en clase y los materiales creados por nosotros.
+                </p>
+                <div class="slide-ctas">
+                  <a href="https://drive.google.com/file/d/1-CVWYnad2hhbutT6yFfBBJvPYa15b-8r/view?usp=sharing" class="gjs-t-button primary-cta">
+                    ¡Échale un vistazo al libro!
+                    <img src="https://api.iconify.design/lucide-arrow-right.svg?color=white" alt="" class="cta-icon" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="slide-image-column">
+              <div class="image-wrapper" style="display: flex; justify-content: center; align-items: center;">
+                <img src="imagenes/Noticias/250925/Libros2.png" alt="Portada del Libro R3" loading="lazy" class="slide-image" style="max-height: 450px; width: auto; border-radius: 10px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); margin-top: 60px;" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+
+      <!-- Puntos de paginación DENTRO del frame -->
+      <div id="pagination" role="tablist" aria-label="Slide pagination" class="pagination-dots"></div>
+      
+    </div> <!-- Cierre de swiper-frame -->
+  </div> <!-- Cierre de swiper-wrapper -->
+  
+  <!-- Botones FUERA del frame pero DENTRO de la sección -->
+  <div class="controls-row" id="ikz2yp">
+    <div aria-label="Slide Navigation" class="nav-buttons-group" id="ifj8cw">
+      <button type="button" id="prev-btn" aria-label="Previous slide" class="prev-button">
+        <img src="https://api.iconify.design/lucide-chevron-left.svg?color=%2311222a" alt="" class="prev-icon" id="ic3291" />
+      </button>
+      <button type="button" id="next-btn" aria-label="Next slide" class="next-button">
+        <img src="https://api.iconify.design/lucide-chevron-right.svg?color=%2311222a" alt="" class="next-icon" id="iu1fvw" />
+      </button>
+    </div>
+  </div>
+  
+</section>
+
+  
+  <!-- ==================== FEATURE 1 (imagen a la derecha) ==================== -->
+  <section id="ix8di" class="gjs-section">
+    <div id="iv7sw" class="gjs-container">
+      <div data-type-role="flex-row" id="iyk4i" class="gjs-plg-flex-row">
+        <div data-type-role="flex-column" id="ihujj" class="gjs-plg-flex-column">
+          <div id="i4az7k"><h1 id="ildutp">¿Qué es un experimento remoto?</h1></div>
+          <div id="iq32yz"><span id="ihzf8">Es un <b>experimento completamente real</b>, no ficticio, donde los estudiantes pueden <b>controlar y observar</b> un experimento desde una <b>ubicación diferente</b> a donde se está llevando a cabo. En lugar de estar físicamente <b>presente en el laboratorio</b>, el alumnado puede acceder al experimento a través de herramientas como Internet.</span></div>
+          <a id="i8bgp-2" href="/" class="gjs-link-box">
+            <div id="iid2o">Visitar los Experimentos Remotos</div>
+            <div data-type-icon id="iy2dh" class="gjs-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M11.273 3.687a1 1 0 1 1 1.454-1.374l8.5 9a1 1 0 0 1 0 1.374l-8.5 9.001a1 1 0 1 1-1.454-1.373L19.125 12z"></path></svg>
+            </div>
+          </a>
+        </div>
+        <div data-type-role="flex-column" id="is46g" class="gjs-plg-flex-column">
+          <div id="i0suw3">  <!-- Este div tiene fadeInRight -->
+            <img id="iz6gi" src="imagenes\Inicio\FondoTranspareten_iMAc.png" alt="Mockup experimentos" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Estilos del fondo y la cuadrícula */
+    .pilares-section {
+        padding: 80px 20px;
+        background-color: #ffffff;
+    }
+    .pilares-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+        padding: 0 10px;
+    }
+    
+    /* Estilos de las tarjetas (Minimalistas) */
+    .pilar-card {
+        background: #ffffff; /* Fondo blanco */
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        /* Sombra muy suave para dar profundidad */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        /* Borde muy sutil */
+        border: 1px solid #f0f0f0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        
+        /* Preparación para la animación de entrada escalonada */
+        opacity: 0;
+        transform: translateY(60px); 
+    }
+
+    /* Efecto Hover (crecer y sombra) */
+    .pilar-card:hover {
+        transform: translateY(-10px) scale(1.03); /* Crece un poquito menos para que sea más sutil */
+        box-shadow: 0 15px 35px rgba(64, 141, 54, 0.1); /* Sombra ligeramente verde */
+        border-color: rgba(64, 141, 54, 0.2); /* Borde verde sutil */
+    }
+
+    /* Animación de entrada cuando haces scroll */
+    .pilar-card.visible {
+        animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    /* Tiempos de retraso para que entren escalonados */
+    .pilar-card:nth-child(1).visible { animation-delay: 0.1s; }
+    .pilar-card:nth-child(2).visible { animation-delay: 0.3s; }
+    .pilar-card:nth-child(3).visible { animation-delay: 0.5s; }
+
+    .mision-container.visible {
+        animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation-delay: 0.7s;
+    }
+
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(60px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Textos e iconos dentro de la tarjeta */
+    .pilar-icon {
+        width: 140px; /* ICONOS MÁS GRANDES (Antes 90px) */
+        height: 140px;
+        object-fit: contain;
+        margin-bottom: 25px;
+        /* Misma transición que la tarjeta */
+        transition: transform 0.3s ease; 
+    }
+    
+    .pilar-card:hover .pilar-icon {
+        transform: scale(1.08); /* Crece sutilmente junto con la tarjeta */
+    }
+    
+    .pilar-title {
+        font-family: 'Baloo Thambi 2', sans-serif;
+        color: #408d36;
+        font-size: 2.2rem;
+        margin-top: 0;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    
+    .pilar-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.15rem; /* Texto un poquito más grande */
+        color: #555; /* Gris ligeramente más oscuro para mejor lectura */
+        line-height: 1.6;
+        margin: 0;
+    }
+  </style>
+
+  <section class="pilares-section" id="seccion-pilares">
+    <div class="gjs-container">
+      
+      <div style="text-align: center;">
+          <h2 class="gjs-t-h1" style="color: #11222a; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.5px;">
+              LOS 3 PILARES DEL PROYECTO
+          </h2>
+      </div>
+
+      <div class="pilares-grid">
+          
+          <div class="pilar-card animar-scroll">
+              <img src="imagenes/Rural.png" alt="Icono Rural" class="pilar-icon">
+              <h3 class="pilar-title">Rural</h3>
+              <p class="pilar-text">El proyecto va dirigido a docentes y el alumnado de entornos rurales.</p>
+          </div>
+          
+          <div class="pilar-card animar-scroll">
+              <img src="imagenes/cientifico.png" alt="Icono Real" class="pilar-icon">
+              <h3 class="pilar-title">Real</h3>
+              <p class="pilar-text">Un experimento remoto es un experimento real, no es virtual ni simulado.</p>
+          </div>
+          
+          <div class="pilar-card animar-scroll">
+              <img src="imagenes/Remoto.png" alt="Icono Remoto" class="pilar-icon">
+              <h3 class="pilar-title">Remoto</h3>
+              <p class="pilar-text">El alumnado puede completar un experimento tecnológico sin estar delante de él.</p>
+          </div>
+
+      </div>
+      
+      <div class="mision-container animar-scroll" style="text-align: center; margin-top: 90px; max-width: 850px; margin-inline: auto; opacity: 0; transform: translateY(60px);">
+          <h2 class="gjs-t-h1" style="color: #408d36; font-size: 2.8rem; margin-bottom: 25px;">Nuestra misión</h2>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 1.3rem; line-height: 1.8; color: #444;">
+              El Proyecto R3 tiene como objetivo fomentar la práctica científico-tecnológica real en escuelas y centros de formación rurales. Los alumnos tendrán acceso a experimentos remotos utilizando Internet.
+          </p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Deja de observar una vez que ha animado para que no se repita
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, { threshold: 0.15 }); // Se activa cuando el 15% del elemento es visible
+
+      // Selecciona todos los elementos con la clase 'animar-scroll'
+      document.querySelectorAll('.animar-scroll').forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+
+  <!-- ==================== SECCIÓN "WHY US?" ==================== -->
+  <section id="i9k4p" class="gjs-section">
+    <div id="iss1k" class="gjs-container">
+      <div data-type-role="flex-row" id="iuass" class="gjs-plg-flex-row">
+        <div data-type-role="flex-column" id="imo43" class="gjs-plg-flex-column">
+          <div id="isrnf1">Why us?</div>
+          <h1 id="i6v2gl">Trusted by Thousands, <span id="iBcvc">Engineered for Excellence</span></h1>
+        </div>
+        <div data-type-role="flex-column" id="ihard" class="gjs-plg-flex-column">
+          <span id="i7wkbx">Our commitment to innovation and quality has earned the trust of customers worldwide. Sleek design, our products are built to impress.</span>
+        </div>
+      </div>
+      <div data-type-role="flex-row" id="iibnn" class="gjs-plg-flex-row">
+        <!-- Estadísticas... (mantén lo que tenías) -->
+      </div>
+    </div>
+  </section>
+
+  
+   <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-section">
+        <div class="footer-wrapper">
+            
+            <div class="footer-col-main">
+                <a href="index.html">
+                    <img src="imagenes/Logo blanco.png" alt="Logo R3 Blanco" class="footer-logo">
+                </a>
+                <p class="footer-desc">Proyecto desarrollado por la Universidad de Deusto y Deusto WebLab para fomentar vocaciones STEM en entornos rurales.</p>
+                
+                <div class="footer-socials">
+                    <a href="mailto:proyecto.r3@deusto.es" class="social-link" title="Enviar Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/proyector3deusto/" class="social-link" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61558793177751" class="social-link" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="mapa.html">Escuelas</a>
+                <a href="recursos.html">Recursos</a>
+                <a href="quienesomos.html">¿Quiénes somos?</a>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Información</h4>
+                <a href="contacto.html">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+
+            <div class="footer-col-links" style="flex: 1 1 250px;">
+                <h4>Financiación y Apoyo</h4>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px; background: white; padding: 10px; border-radius: 10px;">
+                    <img src="imagenes/Socios/Deusto_2.png" alt="Deusto" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Sabadell.png" alt="Sabadell" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Siemens.2.png" alt="Siemens" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/labsland.png" alt="LabsLand" style="height: 35px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                © 2026. Proyecto R3 - Todos los derechos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+  
+
+  <!-- Scripts (necesarios para las animaciones y el menú) -->
+  <script>
+  // Script para el menú hamburguesa
+  function toggleMenu() {
+    const menu = document.getElementById('igyjaw');
+    const iconoHamburguesa = document.getElementById('icono-hamburguesa');
+    const iconoCerrar = document.getElementById('icono-cerrar');
+
+    // Comprobamos si el menú ya tiene la clase "abierto"
+    if (menu.classList.contains('abierto')) {
+        menu.classList.remove('abierto'); // Lo cerramos
+        iconoHamburguesa.style.display = 'block'; // Mostramos líneas
+        iconoCerrar.style.display = 'none'; // Ocultamos X
+    } else {
+        menu.classList.add('abierto'); // Lo abrimos
+        iconoHamburguesa.style.display = 'none'; // Ocultamos líneas
+        iconoCerrar.style.display = 'block'; // Mostramos X
+    }
+  }
+  // Script para animaciones al hacer scroll
+  var props = {
+    "ihz1k9":{"animationUpdateEvent":"animation:update"},
+    "i4az7k":{"animationUpdateEvent":"animation:update"},
+    "iq32yz":{"animationUpdateEvent":"animation:update"},
+    "i0suw3":{"animationUpdateEvent":"animation:update"},
+    "ipaq6g":{"animationUpdateEvent":"animation:update"},
+    "iu8qig":{"animationUpdateEvent":"animation:update"},
+    "i9atkf":{"animationUpdateEvent":"animation:update"},
+    "iqazv5":{"animationUpdateEvent":"animation:update"},
+    "i1yro9":{"animationUpdateEvent":"animation:update"},
+    "igw7m3":{"animationUpdateEvent":"animation:update"},
+    "i1yro9-2":{"animationUpdateEvent":"animation:update"},
+    "iw4iry":{"animationUpdateEvent":"animation:update"},
+    "i89ija":{"animationUpdateEvent":"animation:update"},
+    "iar7et":{"animationUpdateEvent":"animation:update"},
+    "i8q4is":{"animationUpdateEvent":"animation:update"},
+    "iu9ixp":{"animationUpdateEvent":"animation:update"},
+    "ip9hj1":{"animationUpdateEvent":"animation:update"}
+  };
+  var ids = Object.keys(props).map(function(id) { return '#'+id }).join(',');
+  var els = document.querySelectorAll(ids);
+  for (var i = 0, len = els.length; i < len; i++) {
+    var el = els[i];
+    (function(t){
+      const n=this;let e=null;const r=()=>{e==null||e.disconnect(),e=null},i=()=>{r();const a=n.style;a.animationName="",requestAnimationFrame(()=>{const m=getComputedStyle(n),c=m.getPropertyValue("animation-name").trim(),l=m.getPropertyValue("--animation-on-scroll").trim()!=="false",f=parseFloat(m.getPropertyValue("--animation-threshold").trim())||.2,s=m.getPropertyValue("--animation-repeat").trim()==="true",o=()=>{a.animationName="none",n.offsetWidth,a.animationName=c,a.animationPlayState="running"};if(!c||c==="none"){a.animationName="none",a.animationPlayState="paused";return}if(!l){o();return}a.animationPlayState="paused",e=new IntersectionObserver(p=>{p.forEach(d=>{d.isIntersecting&&(o(),!s&&r())})},{threshold:f}),e.observe(n)})};n.addEventListener(t.animationUpdateEvent,i),i()
+    }.bind(el))(props[el.id]);
+  }
+
+  // Script para acordeones (si los tienes)
+  var props = {"iw8cin":{"single":true}};
+  var ids = Object.keys(props).map(function(id) { return '#'+id }).join(',');
+  var els = document.querySelectorAll(ids);
+  for (var i = 0, len = els.length; i < len; i++) {
+    var el = els[i];
+    (function(i={}){if(!i.single)return;const r=this;r.addEventListener("details-toggle",o=>{const d=o.target;if(!i.single||!d||!d.open)return;r.querySelectorAll('[data-type-role="accordion"]').forEach(y=>{d!==y&&y.open&&(y.open=!1)})})}.bind(el))(props[el.id]);
+  }
+
+  var props = {
+    "ikuj7o":{"clsMarkerOpen":"gjs-plg-accordion-marker-open"},
+    "isj96a":{"clsMarkerOpen":"gjs-plg-accordion-marker-open"},
+    "ihrdup":{"clsMarkerOpen":"gjs-plg-accordion-marker-open"},
+    "ipgszl":{"clsMarkerOpen":"gjs-plg-accordion-marker-open"},
+    "icm5gl":{"clsMarkerOpen":"gjs-plg-accordion-marker-open"}
+  };
+  var ids = Object.keys(props).map(function(id) { return '#'+id }).join(',');
+  var els = document.querySelectorAll(ids);
+  for (var i = 0, len = els.length; i < len; i++) {
+    var el = els[i];
+    (function(i={}){const r=this,o=()=>{const{clsMarkerOpen:d}=i,A=r.querySelector('[data-type-role="accordion-marker"]');!A||!d||(r.open?A.classList.add(d):A.classList.remove(d))};r.addEventListener("toggle",()=>{o(),r.dispatchEvent(new CustomEvent("details-toggle",{bubbles:!0}))}),o()}.bind(el))(props[el.id]);
+  }
+
+
+  // Script para el swiper
+(function() {
+  const track = document.getElementById('slides-track');
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const pagination = document.getElementById('pagination');
+
+  let current = 0;
+  let autoTimer = null;
+  const interval = 6000;
+  const total = slides.length;
+  let isAnimating = false;
+
+  function renderDots() {
+    pagination.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pagination-dot';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i, true));
+      pagination.appendChild(btn);
+    }
+    updateDots();
+  }
+
+  function updateDots() {
+    const dots = pagination.querySelectorAll('button');
+    dots.forEach((d, i) => {
+      if (i === current) {
+        d.classList.add('active');
+      } else {
+        d.classList.remove('active');
+      }
+    });
+  }
+
+  function goTo(index, userInitiated = false) {
+    if (isAnimating) return;
+    isAnimating = true;
+    current = (index + total) % total;
+    const offset = -100 * current;
+    track.style.transform = `translateX(${offset}%)`;
+    updateDots();
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
+    if (userInitiated) restartAuto();
+  }
+
+  function next() {
+    goTo(current + 1);
+  }
+
+  function prev() {
+    goTo(current - 1);
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(next, interval);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  function restartAuto() {
+    startAuto();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1, true));
+  nextBtn.addEventListener('click', () => goTo(current + 1, true));
+
+  const frame = track.parentElement;
+  frame.addEventListener('mouseenter', stopAuto);
+  frame.addEventListener('mouseleave', startAuto);
+  frame.addEventListener('focusin', stopAuto);
+  frame.addEventListener('focusout', startAuto);
+
+  frame.tabIndex = 0;
+  frame.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goTo(current + 1, true);
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goTo(current - 1, true);
+    }
+  });
+
+  renderDots();
+  startAuto();
+  window.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto();
+    else startAuto();
+  });
+  window.addEventListener('resize', () => {
+    goTo(current);
+  });
+})();
+
+</script>
+<div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <img src="imagenes/logo2.png" alt="avatar" id="chat-avatar" style="background-color: white;">
+      <span id="chat-title">Asistente IA ProyectoR3</span>
+      <button id="chat-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <input type="text" id="userMessage" placeholder="Escribe algo..." />
+      <button id="send-btn" onclick="sendMessage()">
+        </button>
+    </div>
+  </div>
+  <div id="chat-button">
+    </div>
+</div>
+</body>
+</html>

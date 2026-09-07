@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Mapa de Centros Escolares</title>
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="ChatIA/chat.css">
+    <script src="ChatIA/chat.js" defer></script>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <!--Bloque para rastreo de interacciones-->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wfaoqmmw8z");
+    </script>
+    <style>
+
+        /* ========================================= */
+        /* 3. ESTILOS DEL MAPA Y CONTROLES           */
+        /* ========================================= */
+        .cajamapa {
+            width: 100%;
+            position: relative; 
+            line-height: 0; 
+            /* margin-top: 100px; <-- DESCOMENTA ESTA LÍNEA SI VES QUE EL MENÚ TAPA LA ZONA ALTA DEL MAPA */
+        }
+        
+        #mapa {
+            width: 100%;
+            height: 75vh; 
+            border: none;
+        }
+
+        .controles-mapa {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            width: 90%;
+            max-width: 1200px;
+            margin: -20px auto 30px auto; 
+            position: relative; 
+            z-index: 10;
+        }
+
+        #buscador {
+            flex-grow: 1;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid #418A37;
+            border-radius: 25px;
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            background-color: white;
+        }
+
+        .btn-reset {
+            padding: 14px 25px;
+            background-color: #418A37;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(65, 138, 55, 0.2);
+        }
+        
+        .btn-reset:hover {
+            background-color: #326b2b;
+            transform: translateY(-2px);
+        }
+
+        .grid-centros {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+        }
+
+        .centro-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .centro-card:hover {
+            background-color: #f1f8f0;
+            border-color: #418A37;
+            box-shadow: 0 4px 8px rgba(65, 138, 55, 0.2);
+            transform: translateY(-2px);
+        }
+        .centro-nombre {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .centro-ubicacion {
+            color: #777;
+            font-size: 0.95em;
+        }
+
+        /* ========================================= */
+        /* 4. DISEÑO RESPONSIVO (TELÉFONOS)          */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            /* Elementos del mapa */
+            .grid-centros {
+                grid-template-columns: 1fr;
+            }
+            .controles-mapa {
+                flex-direction: column;
+                margin-top: -20px; 
+            }
+            #buscador, .btn-reset {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Elementos del navegador móvil */
+            #ihn2tg, .nav-link-desk { display: none !important; }
+            .navbar-menu-toggle { display: block; margin-right: 15px;}
+            
+            #ic2h68 { flex-wrap: wrap; }
+            
+            .navbar-items-c {
+                display: none; /* Oculto por defecto */
+                width: 100%;
+                padding-top: 15px;
+                padding-bottom: 10px;
+            }
+            .navbar-items-c.abierto { display: block; }
+            
+            #ik60dj { flex-direction: column; width: 100%; }
+            
+            .nav-link-movil {
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 15px 25px;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                color: #262628;
+                text-decoration: none;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="iw4lcc" class="navbar">
+    <div data-gjs="navbar" id="ic2h68" class="navbar-cnt">
+
+      <!-- Logo -->
+      <a href="/" id="if02rl" class="navbar-brand">
+        <img id="ihwzu6" src="imagenes/logo.png" alt="Logo">
+      </a>
+
+      <!-- Botón navegador movil-->
+      <div id="ivhcul" class="navbar-menu-toggle" onclick="toggleMenu()">
+        <svg id="icono-hamburguesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25"><path fill="currentColor" d="M16 224h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m416 192H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16m3.17-384H172.83A12.82 12.82 0 0 0 160 44.83v38.34A12.82 12.82 0 0 0 172.83 96h262.34A12.82 12.82 0 0 0 448 83.17V44.83A12.82 12.82 0 0 0 435.17 32m0 256H172.83A12.82 12.82 0 0 0 160 300.83v38.34A12.82 12.82 0 0 0 172.83 352h262.34A12.82 12.82 0 0 0 448 339.17v-38.34A12.82 12.82 0 0 0 435.17 288"></path></svg>
+        <svg id="icono-cerrar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="25" height="25" style="display: none;"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      </div>
+
+      <!-- Menú de navegación -->
+      <div data-gjs="navbar-items" id="igyjaw" class="navbar-items-c">
+        <nav id="ik60dj" class="navbar-menu-nav">
+
+          <!-- ENLACES MÓVIL -->
+          <a id="inicio-mov" href="index.html" class="nav-link-movil">Inicio</a>
+          <a id="escuelas-mov" href="mapa.html" class="nav-link-movil">Escuelas</a>
+          <a id="noticias-mov" href="noticias.html" class="nav-link-movil">Noticias</a>
+          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Recursos educativos</a>
+          <a id="cuestionarios-mov" href="Cuestionarios.html" class="nav-link-movil">Cuestionarios</a>
+
+          <!-- ENLACES ESCRITORIO -->
+          <div data-type-role="flex-row" id="ihn2tg" class="gjs-plg-flex-row">
+            <div data-type-role="flex-column" id="if5sw5" class="gjs-plg-flex-column">
+              <a id="inicio-desk" href="index.html"class="nav-link-desk">Inicio</a>
+              <a id="escuelas-desk" href="mapa.html" class="nav-link-desk">Escuelas</a>
+              <a id="noticias-desk" href="noticias.html"class="nav-link-desk">Noticias</a>
+              <a id="videos-desk" href="Videos.html" class="nav-link-desk">Recursos educativos</a>
+              <a id="cuestionarios-desk" href="Cuestionarios.html" class="nav-link-desk">Cuestionarios</a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+
+    <div class="cajamapa">
+        <iframe id="mapa" src="https://www.google.com/maps/d/embed?mid=10-ll8-OS_ZwtJto4xkwbxlWcTIoUzrQ&ehbc=2E312F&noprof=1" height="600"></iframe>
+    </div>
+
+    <div class="controles-mapa">
+        <input type="text" id="buscador" onkeyup="filtrarCentros()" placeholder="Buscar centro escolar o ubicación...">
+        <button class="btn-reset" onclick="restablecerMapa()">Ver todos los centros</button>
+    </div>
+
+    <div class="nombredecentros">
+        <div class="grid-centros" id="lista-centros">
+            
+            <div class="centro-card" onclick="mostrarEnMapa('Aramaixo Herri eskola, Aramaio, Álava')">
+                <div class="centro-nombre">Aramaixo Herri eskola</div>
+                <div class="centro-ubicacion">Aramaio, Álava</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Amoroto HLHI, Amoroto, Bizkaia')">
+                <div class="centro-nombre">Amoroto HLHI</div>
+                <div class="centro-ubicacion">Amoroto, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Ballonti BHI, Portugalete, Bizkaia')">
+                <div class="centro-nombre">Ballonti BHI</div>
+                <div class="centro-ubicacion">Portugalete, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Bekobenta, Markina, Bizkaia')">
+                <div class="centro-nombre">Bekobenta</div>
+                <div class="centro-ubicacion">Markina, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Bertendona BHI, Bilbao, Bizkaia')">
+                <div class="centro-nombre">Bertendona BHI</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('BHI Dolores Ibarruri, Gallarta, Bizkaia')">
+                <div class="centro-nombre">BHI Dolores Ibarruri</div>
+                <div class="centro-ubicacion">Gallarta, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('BHI San Inazio, Bilbao, Bizkaia')">
+                <div class="centro-nombre">BHI San Inazio</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Botikazar BHI, Bilbao, Bizkaia')">
+                <div class="centro-nombre">Botikazar BHI</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('C.P. Matemático Pedrayes, Lastres, Asturias')">
+                <div class="centro-nombre">C.P. Matemático Pedrayes</div>
+                <div class="centro-ubicacion">Lastres, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Aginaga HLHI, Aginaga, Gipuzkoa')">
+                <div class="centro-nombre">CEIP Aginaga HLHI</div>
+                <div class="centro-ubicacion">Aginaga, Gipuzkoa</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Astrónomo Zarzoso, Cella, Teruel (Aragón)')">
+                <div class="centro-nombre">CEIP Astrónomo Zarzoso</div>
+                <div class="centro-ubicacion">Cella, Teruel (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Casimiro Sáinz, Matamorosa, Cantabria')">
+                <div class="centro-nombre">CEIP Casimiro Sáinz</div>
+                <div class="centro-ubicacion">Matamorosa, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Castell del Pop, Murla, Marina Alta (Alicante)')">
+                <div class="centro-nombre">CEIP Castell del Pop</div>
+                <div class="centro-ubicacion">Murla, Marina Alta (Alicante)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP de Ujué, Ujué, Navarra')">
+                <div class="centro-nombre">CEIP de Ujué</div>
+                <div class="centro-ubicacion">Ujué, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Estela de Zurita, Zurita, Cantabria')">
+                <div class="centro-nombre">CEIP Estela de Zurita</div>
+                <div class="centro-ubicacion">Zurita, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Francisco Mondragón, Eslida, Castelló')">
+                <div class="centro-nombre">CEIP Francisco Mondragón</div>
+                <div class="centro-ubicacion">Eslida, Castelló</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP LUIS VIVES, Xilxes, Castellón')">
+                <div class="centro-nombre">CEIP LUIS VIVES</div>
+                <div class="centro-ubicacion">Xilxes, Castellón</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP María Moliner, Castellanos de Moriscos, Salamanca (Castilla y León)')">
+                <div class="centro-nombre">CEIP María Moliner</div>
+                <div class="centro-ubicacion">Castellanos de Moriscos, Salamanca (Castilla y León)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP. Ntra. Sra. del Buen Camino, San Roman de los Montes, Toledo')">
+                <div class="centro-nombre">CEIP. Ntra. Sra. del Buen Camino</div>
+                <div class="centro-ubicacion">San Roman de los Montes, Toledo</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP Pedro I, Barbastro, Huesca (Aragón)')">
+                <div class="centro-nombre">CEIP Pedro I</div>
+                <div class="centro-ubicacion">Barbastro, Huesca (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP San Jorge, Palencia, Castilla y León')">
+                <div class="centro-nombre">CEIP San Jorge</div>
+                <div class="centro-ubicacion">Palencia, Castilla y León</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP VITAL ALSAR, Cueto, Cantabria')">
+                <div class="centro-nombre">CEIP VITAL ALSAR</div>
+                <div class="centro-ubicacion">Cueto, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEIP ZAZPILANDA HLHI, Bilbao, Bizkaia')">
+                <div class="centro-nombre">CEIP ZAZPILANDA HLHI</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CEPA Bermeo HHI, Bermeo, Bizkaia')">
+                <div class="centro-nombre">CEPA Bermeo HHI</div>
+                <div class="centro-ubicacion">Bermeo, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio público Elgeta Herriko Eskola, Elgeta, Gipuzkoa')">
+                <div class="centro-nombre">Colegio público Elgeta Herriko Eskola</div>
+                <div class="centro-ubicacion">Elgeta, Gipuzkoa</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Ispaster, Ispaster, Bizkaia')">
+                <div class="centro-nombre">Colegio Público Ispaster</div>
+                <div class="centro-ubicacion">Ispaster, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Miguel Artazos Tame, Zuera, Zaragoza (Aragón)')">
+                <div class="centro-nombre">Colegio Público Miguel Artazos Tame</div>
+                <div class="centro-ubicacion">Zuera, Zaragoza (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Virgen de Nievas, Dicastillo, Navarra')">
+                <div class="centro-nombre">Colegio Público Virgen de Nievas</div>
+                <div class="centro-ubicacion">Dicastillo, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio San José Ikastetxea-Carmelitas Teresas de San José, Santurtzi, Bizkaia')">
+                <div class="centro-nombre">Colegio San José Ikastetxea-Carmelitas Teresas de San José</div>
+                <div class="centro-ubicacion">Santurtzi, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Santa Teresa, Calahorra, La Rioja')">
+                <div class="centro-nombre">Colegio Santa Teresa</div>
+                <div class="centro-ubicacion">Calahorra, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio de Educación Infantil y Primaria de Beire, Beire, Navarra')">
+                <div class="centro-nombre">Colegio de Educación Infantil y Primaria de Beire</div>
+                <div class="centro-ubicacion">Beire, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio de Educación Infantil y Primaria de Ujué, Ujué, Navarra')">
+                <div class="centro-nombre">Colegio de Educación Infantil y Primaria de Ujué</div>
+                <div class="centro-ubicacion">Ujué, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Menesiano Santo Domingo de la Calzada, Santo Domingo de la Calzada, La Rioja')">
+                <div class="centro-nombre">Colegio Menesiano Santo Domingo de la Calzada</div>
+                <div class="centro-ubicacion">Santo Domingo de la Calzada, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Aderán 1, Racena, Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Aderán 1</div>
+                <div class="centro-ubicacion">Racena, Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Aderan 2, Zona rural de Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Aderan 2</div>
+                <div class="centro-ubicacion">Zona rural de Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Adersa 1, Zona rural de Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Adersa 1</div>
+                <div class="centro-ubicacion">Zona rural de Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Adersa 2, Zona rural de Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Adersa 2</div>
+                <div class="centro-ubicacion">Zona rural de Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Adersa 4, Zona rural de Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Adersa 4</div>
+                <div class="centro-ubicacion">Zona rural de Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Colegio Público Rural Adersa 6, Zona rural de Huelva (Andalucía)')">
+                <div class="centro-nombre">Colegio Público Rural Adersa 6</div>
+                <div class="centro-ubicacion">Zona rural de Huelva (Andalucía)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Col·legi Públic Manuel de Castellví i Feliu Zer Atzavara, Alzira, Valencia (Comunidad Valenciana)')">
+                <div class="centro-nombre">Col·legi Públic Manuel de Castellví i Feliu Zer Atzavara</div>
+                <div class="centro-ubicacion">Alzira, Valencia (Comunidad Valenciana)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CPI El Espartidero, Santa Isabel, Zaragoza (Aragón)')">
+                <div class="centro-nombre">CPI El Espartidero</div>
+                <div class="centro-ubicacion">Santa Isabel, Zaragoza (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CPEIP Beire, Beire, Navarra')">
+                <div class="centro-nombre">CPEIP Beire</div>
+                <div class="centro-ubicacion">Beire, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CP Pedro Primero, Barbastro, Huesca (Aragón)')">
+                <div class="centro-nombre">CP Pedro Primero</div>
+                <div class="centro-ubicacion">Barbastro, Huesca (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CPR Tres Fuentes, Villanueva de la Jara, Cuenca (Castilla-La Mancha)')">
+                <div class="centro-nombre">CPR Tres Fuentes</div>
+                <div class="centro-ubicacion">Villanueva de la Jara, Cuenca (Castilla-La Mancha)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CRA Ariño-Alloza, Ariño y Alloza, Teruel (Aragón)')">
+                <div class="centro-nombre">CRA Ariño-Alloza</div>
+                <div class="centro-ubicacion">Ariño y Alloza, Teruel (Aragón)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CRA La Coroña, Ceceda-Nava, Asturias')">
+                <div class="centro-nombre">CRA La Coroña</div>
+                <div class="centro-ubicacion">Ceceda-Nava, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CRA La Marina, Castiello de la Marina - Villaviciosa, Asturias')">
+                <div class="centro-nombre">CRA La Marina</div>
+                <div class="centro-ubicacion">Castiello de la Marina - Villaviciosa, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('CRA Pintor Álvaro Delgado, Outur, Asturias')">
+                <div class="centro-nombre">CRA Pintor Álvaro Delgado</div>
+                <div class="centro-ubicacion">Outur, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Cruces BHI, Cruces IES')">
+                <div class="centro-nombre">Cruces BHI</div>
+                <div class="centro-ubicacion">Cruces IES</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Escuela Barrundia, Ozaeta, Araba')">
+                <div class="centro-nombre">Escuela Barrundia</div>
+                <div class="centro-ubicacion">Ozaeta, Araba</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Escola El Pins, El Prat de Llobregat, Barcelona (Cataluña)')">
+                <div class="centro-nombre">Escola El Pins</div>
+                <div class="centro-ubicacion">El Prat de Llobregat, Barcelona (Cataluña)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Escola Els Pins - Zer Bages, El Prat de Llobregat, Barcelona (Cataluña)')">
+                <div class="centro-nombre">Escola Els Pins - Zer Bages</div>
+                <div class="centro-ubicacion">El Prat de Llobregat, Barcelona (Cataluña)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Escuela Teresiana, Calahorra, Calahorra, La Rioja')">
+                <div class="centro-nombre">Escuela Teresiana, Calahorra</div>
+                <div class="centro-ubicacion">Calahorra, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Gabriel Aresti BHI, Bilbao, Vizcaya (País Vasco)')">
+                <div class="centro-nombre">Gabriel Aresti BHI</div>
+                <div class="centro-ubicacion">Bilbao, Vizcaya (País Vasco)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Balàfia, Sant Joan de Labritja, Illes Balears')">
+                <div class="centro-nombre">IES Balàfia</div>
+                <div class="centro-ubicacion">Sant Joan de Labritja, Illes Balears</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Ballonti BHI, Portugalete, Bizkaia')">
+                <div class="centro-nombre">IES Ballonti BHI</div>
+                <div class="centro-ubicacion">Portugalete, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Berriz BHI BIGARREN HEZKUNTZA INSTITUTUA, Berriz, Bizkaia')">
+                <div class="centro-nombre">IES Berriz BHI BIGARREN HEZKUNTZA INSTITUTUA</div>
+                <div class="centro-ubicacion">Berriz, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Bertendona BHI, Bilbao, Bizkaia')">
+                <div class="centro-nombre">IES Bertendona BHI</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Conde Aranda, Alagón, Zaragoza')">
+                <div class="centro-nombre">IES Conde Aranda</div>
+                <div class="centro-ubicacion">Alagón, Zaragoza</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES CRUCES Barakaldo- Bizkaia, Barakaldo, Bizkaia')">
+                <div class="centro-nombre">IES CRUCES Barakaldo- Bizkaia</div>
+                <div class="centro-ubicacion">Barakaldo, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Dolores Ibarruri BHI, Gallarta, Bizkaia')">
+                <div class="centro-nombre">IES Dolores Ibarruri BHI</div>
+                <div class="centro-ubicacion">Gallarta, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES El Prat, Torreblanca, Castellón')">
+                <div class="centro-nombre">IES El Prat</div>
+                <div class="centro-ubicacion">Torreblanca, Castellón</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Escultor Daniel, Logroño, La Rioja')">
+                <div class="centro-nombre">IES Escultor Daniel</div>
+                <div class="centro-ubicacion">Logroño, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Francisco Tomás y Valiente, Fuenmayor, La Rioja')">
+                <div class="centro-nombre">IES Francisco Tomás y Valiente</div>
+                <div class="centro-ubicacion">Fuenmayor, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Gonzalo de Berceo de Alfaro, Alfaro, La Rioja')">
+                <div class="centro-nombre">IES Gonzalo de Berceo de Alfaro</div>
+                <div class="centro-ubicacion">Alfaro, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES José del Campo, Ampuero, Cantabria')">
+                <div class="centro-nombre">IES José del Campo</div>
+                <div class="centro-ubicacion">Ampuero, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Juan Bosco, Alcázar de San Juan, Cdad. Real')">
+                <div class="centro-nombre">IES Juan Bosco</div>
+                <div class="centro-ubicacion">Alcázar de San Juan, Cdad. Real</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES La Laboral, Gijón, Asturias')">
+                <div class="centro-nombre">IES La Laboral</div>
+                <div class="centro-ubicacion">Gijón, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Los Cantos, Bullas, Murcia')">
+                <div class="centro-nombre">IES Los Cantos</div>
+                <div class="centro-ubicacion">Bullas, Murcia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Lucas Mallada, Huesca, Aragón')">
+                <div class="centro-nombre">IES Lucas Mallada</div>
+                <div class="centro-ubicacion">Huesca, Aragón</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Marqués de Villena, Marcilla, Navarra')">
+                <div class="centro-nombre">IES Marqués de Villena</div>
+                <div class="centro-ubicacion">Marcilla, Navarra</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('I.E.S Montes Negros, Grañén, Huesca')">
+                <div class="centro-nombre">I.E.S Montes Negros</div>
+                <div class="centro-ubicacion">Grañén, Huesca</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Ondarroa BHI, Ondarroa, Bizkaia')">
+                <div class="centro-nombre">IES Ondarroa BHI</div>
+                <div class="centro-ubicacion">Ondarroa, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Salinas, Salinas, Asturias')">
+                <div class="centro-nombre">IES Salinas</div>
+                <div class="centro-ubicacion">Salinas, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES San Inazio BHI, Bilbao, Bizkaia')">
+                <div class="centro-nombre">IES San Inazio BHI</div>
+                <div class="centro-ubicacion">Bilbao, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Santa Cruz, Castañeda, Cantabria')">
+                <div class="centro-nombre">IES Santa Cruz</div>
+                <div class="centro-ubicacion">Castañeda, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Urritxe BHI, Amorebieta-Etxano, Bizkaia')">
+                <div class="centro-nombre">IES Urritxe BHI</div>
+                <div class="centro-ubicacion">Amorebieta-Etxano, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Valle del Cidacos, Calahorra, La Rioja')">
+                <div class="centro-nombre">IES Valle del Cidacos</div>
+                <div class="centro-ubicacion">Calahorra, La Rioja</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IESO PEDANÍAS ALTAS, La Paca, Murcia')">
+                <div class="centro-nombre">IESO PEDANÍAS ALTAS</div>
+                <div class="centro-ubicacion">La Paca, Murcia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('IES Ximénd\'Urrea, L\'Alcora, Castellón')">
+                <div class="centro-nombre">IES Ximénd'Urrea</div>
+                <div class="centro-ubicacion">L'Alcora, Castellón</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('La Coroña CRA, Ceceda-Nava, Asturias')">
+                <div class="centro-nombre">La Coroña CRA</div>
+                <div class="centro-ubicacion">Ceceda-Nava, Asturias</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Mary Ward Ikastetxea, Donostia, Gipuzkoa')">
+                <div class="centro-nombre">Mary Ward Ikastetxea</div>
+                <div class="centro-ubicacion">Donostia, Gipuzkoa</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Osotu Lanbarri Ikastetxea, Güeñes, Bizkaia')">
+                <div class="centro-nombre">Osotu Lanbarri Ikastetxea</div>
+                <div class="centro-ubicacion">Güeñes, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('SAGRADO CORAZON DE JESUS SANTOÑA, Santoña, Cantabria')">
+                <div class="centro-nombre">SAGRADO CORAZON DE JESUS SANTOÑA</div>
+                <div class="centro-ubicacion">Santoña, Cantabria</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('San Martin Aramaio, Ibarra, Araba')">
+                <div class="centro-nombre">San Martin Aramaio</div>
+                <div class="centro-ubicacion">Ibarra, Araba</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('San Fidel Ikastola, Gernika-Lumo, Vizcaya (País Vasco)')">
+                <div class="centro-nombre">San Fidel Ikastola</div>
+                <div class="centro-ubicacion">Gernika-Lumo, Vizcaya (País Vasco)</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Urgain Herri Eskola, Oñati, Gipuzkoa')">
+                <div class="centro-nombre">Urgain Herri Eskola</div>
+                <div class="centro-ubicacion">Oñati, Gipuzkoa</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Urregarai Herri Eskola, Aulesti, Bizkaia')">
+                <div class="centro-nombre">Urregarai Herri Eskola</div>
+                <div class="centro-ubicacion">Aulesti, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Urritxe BHI, Amorebieta, Bizkaia')">
+                <div class="centro-nombre">Urritxe BHI</div>
+                <div class="centro-ubicacion">Amorebieta, Bizkaia</div>
+            </div>
+            <div class="centro-card" onclick="mostrarEnMapa('Zaldupe HLHI, Ondarroa, Bizkaia')">
+                <div class="centro-nombre">Zaldupe HLHI</div>
+                <div class="centro-ubicacion">Ondarroa, Bizkaia</div>
+            </div>
+
+        </div>
+    </div>
+   
+ <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-section">
+        <div class="footer-wrapper">
+            
+            <div class="footer-col-main">
+                <a href="index.html">
+                    <img src="imagenes/Logo blanco.png" alt="Logo R3 Blanco" class="footer-logo">
+                </a>
+                <p class="footer-desc">Proyecto desarrollado por la Universidad de Deusto y Deusto WebLab para fomentar vocaciones STEM en entornos rurales.</p>
+                
+                <div class="footer-socials">
+                    <a href="mailto:proyecto.r3@deusto.es" class="social-link" title="Enviar Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/proyector3deusto/" class="social-link" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61558793177751" class="social-link" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="mapa.html">Escuelas</a>
+                <a href="recursos.html">Recursos</a>
+                <a href="quienesomos.html">¿Quiénes somos?</a>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Información</h4>
+                <a href="contacto.html">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+
+            <div class="footer-col-links" style="flex: 1 1 250px;">
+                <h4>Financiación y Apoyo</h4>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px; background: white; padding: 10px; border-radius: 10px;">
+                    <img src="imagenes/Socios/Deusto_2.png" alt="Deusto" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Sabadell.png" alt="Sabadell" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Siemens.2.png" alt="Siemens" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/labsland.png" alt="LabsLand" style="height: 35px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                © 2026. Proyecto R3 - Todos los derechos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const mapaGeneralUrl = "https://www.google.com/maps/d/embed?mid=10-ll8-OS_ZwtJto4xkwbxlWcTIoUzrQ&ehbc=2E312F&noprof=1";
+
+        function mostrarEnMapa(busqueda) {
+            let iframe = document.getElementById('mapa');
+            let urlEspeciafica = "https://maps.google.com/maps?q=" + encodeURIComponent(busqueda) + "&t=&z=14&ie=UTF8&iwloc=&output=embed";
+            iframe.src = urlEspeciafica;
+            
+            document.querySelector('.cajamapa').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restablecerMapa() {
+            let iframe = document.getElementById('mapa');
+            iframe.src = mapaGeneralUrl;
+        }
+
+        function filtrarCentros() {
+            let input = document.getElementById('buscador').value.toLowerCase();
+            let tarjetas = document.getElementsByClassName('centro-card');
+            
+            for (let i = 0; i < tarjetas.length; i++) {
+                let nombre = tarjetas[i].getElementsByClassName('centro-nombre')[0].innerText.toLowerCase();
+                let ubicacion = tarjetas[i].getElementsByClassName('centro-ubicacion')[0].innerText.toLowerCase();
+                
+                if (nombre.includes(input) || ubicacion.includes(input)) {
+                    tarjetas[i].style.display = "";
+                } else {
+                    tarjetas[i].style.display = "none";
+                }
+            }
+        }
+        
+    // Script para el menú hamburguesa
+    function toggleMenu() {
+      const menu = document.getElementById('igyjaw');
+      const iconoHamburguesa = document.getElementById('icono-hamburguesa');
+      const iconoCerrar = document.getElementById('icono-cerrar');
+
+      if (menu.classList.contains('abierto')) {
+          menu.classList.remove('abierto'); // Lo cerramos
+          iconoHamburguesa.style.display = 'block'; 
+          iconoCerrar.style.display = 'none'; 
+      } else {
+          menu.classList.add('abierto'); // Lo abrimos
+          iconoHamburguesa.style.display = 'none'; 
+          iconoCerrar.style.display = 'block'; 
+      }
+    }
+  
+    </script>
+    <div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <img src="imagenes/logo2.png" alt="avatar" id="chat-avatar" style="background-color: white;">
+      <span id="chat-title">Asistente IA ProyectoR3</span>
+      <button id="chat-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <input type="text" id="userMessage" placeholder="Escribe algo..." />
+      <button id="send-btn" onclick="sendMessage()">
+        </button>
+    </div>
+  </div>
+  <div id="chat-button">
+    </div>
+</div>
+</body>
+</html>

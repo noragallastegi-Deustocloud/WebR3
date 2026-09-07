@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recursos - Laboratorios Remotos R3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="ChatIA/chat.css">
+    <script src="ChatIA/chat.js" defer></script>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <!--Bloque para rastreo de interacciones-->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wfaoqmmw8z");
+    </script>
+    <style>
+        /* ========================================= */
+        /* 1. ESTILOS GENERALES Y NAVEGADOR          */
+        /* ========================================= */
+        body { margin: 0; padding-top: 100px; font-family: 'Inter', sans-serif; background-color: #F8F9FA; color: #262628; }
+
+        #iw4lcc { background-color: transparent; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; padding: 1rem; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        #ic2h68 { max-width: 1200px; margin: 0 auto; width: 90%; background-color: rgba(255,255,255,0.84); border-radius: 2.5rem; backdrop-filter: blur(1rem); padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        #if02rl { padding: 0px; margin-left: 15px; display: flex; align-items: center; text-decoration: none; }
+        #ihwzu6 { width: 100px; }
+        
+        .navbar-items-c { display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 70%; }
+        #ik60dj { margin: 0; padding: 0; display: flex; align-items: center; height: 100%; width: 100%; }
+        #ihn2tg { display: flex; width: 100%; align-items: center; }
+        #if5sw5 { width: 100%; display: flex; justify-content: space-evenly; align-items: center; }
+        
+        .nav-link-desk { color: #22333E; padding: 12px; font-weight: 500; cursor: pointer; text-decoration: none; border-bottom: 2px solid transparent; transition: border 0.3s ease; }
+        .nav-link-desk:hover, .nav-link-desk.active { border-color: #418A37; color: #418A37; }
+
+        .nav-link-movil { display: none; }
+        .navbar-menu-toggle { display: none; cursor: pointer; color: #262628; }
+
+        @media (max-width: 768px) {
+            #ihn2tg, .nav-link-desk { display: none !important; }
+            .navbar-menu-toggle { display: block; margin-right: 15px;}
+            #ic2h68 { flex-wrap: wrap; }
+            .navbar-items-c { display: none; width: 100%; padding-top: 15px; padding-bottom: 10px; }
+            .navbar-items-c.abierto { display: block; }
+            #ik60dj { flex-direction: column; width: 100%; }
+            .nav-link-movil { display: block; width: 100%; text-align: left; padding: 15px 25px; box-sizing: border-box; border-bottom: 1px solid rgba(0,0,0,0.05); color: #262628; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500; }
+        }
+
+        /* ========================================= */
+        /* 2. CABECERA HERO Y PESTAÑAS PRINCIPALES   */
+        /* ========================================= */
+        .hero-videos {
+            text-align: center;
+            padding: 60px 20px 80px 20px;
+            background: linear-gradient(135deg, #5ba651d5 0%, #27633D 100%);
+            border-radius: 0 0 3rem 3rem;
+            margin-top: -100px; 
+            padding-top: 140px;
+        }
+        .hero-videos h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #ffff; margin: 0; font-weight: 700; }
+        .hero-videos p { font-size: 1.2rem; color: #ffff; max-width: 600px; margin: 15px auto 0; }
+
+        /* Pestañas Flotantes */
+        .main-tabs-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: -20px; 
+            position: relative;
+            z-index: 10;
+            padding: 0 0px;
+        }
+        .main-tab {
+            padding: 10px 25px; 
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem; 
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .main-tab:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.12); color: #418A37; }
+        .main-tab.active { background-color: #418A37; color: white; box-shadow: 0 10px 20px rgba(65, 138, 55, 0.3); }
+
+        .content-section { display: none; animation: fadeIn 0.5s ease; padding-top: 20px; }
+        .content-section.active { display: block; }
+
+        /* ========================================= */
+        /* 3. ESTILOS DE CUADRÍCULAS Y TARJETAS      */
+        /* ========================================= */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+        .section-title { font-family: 'Poppins', sans-serif; font-size: 1.5rem; color: #262628; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; display: inline-block; width: 6px; height: 24px; background-color: #418A37; border-radius: 4px; }
+        
+        .grid-general { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+
+        /* Tarjeta Común */
+        .card { background-color: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-title { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 600; margin: 0 0 8px 0; color: #22333E; line-height: 1.4;}
+
+        /* ============================================================== */
+        /* 🛠️ MEJORA: ESTILOS DE LOS VÍDEOS (EL "PLAN B" CHULO)       */
+        /* ============================================================== */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Placeholder para cuando la imagen falla o se bloquea. Un degradado sutil con patrón. */
+            background-color: #11222a; /* primary black from site desk desktop nave-itemsdesk */
+            background-image:
+                linear-gradient(135deg, rgba(65, 138, 55, 0.1) 20%, transparent 20%),
+                linear-gradient(225deg, rgba(65, 138, 55, 0.1) 20%, transparent 20%),
+                linear-gradient(135deg, transparent 80%, rgba(65, 138, 55, 0.1) 80%),
+                linear-gradient(225deg, transparent 80%, rgba(65, 138, 55, 0.1) 80%),
+                radial-gradient(circle at center, transparent 0%, rgba(65, 138, 55, 0.05) 50%, #11222a 100%),
+                repeating-radial-gradient(circle, rgba(65, 138, 55, 0.05), rgba(65, 138, 55, 0.05) 1px, transparent 1px, transparent 15px);
+            background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%, 15px 15px;
+            background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0; /* Add top rounding to wrapper directly for cleaner look if image is missing */
+        }
+        .card:hover .video-wrapper {
+            background-color: rgba(65, 138, 55, 0.05); /* very light site brand color green */
+        }
+
+        /* Estilo para la imagen miniatura */
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.95; /* Ligeramente opaco para que se note el efecto hover */
+            transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: absolute; /* Place on top of background pattern */
+            top: 0; left: 0;
+            z-index: 1;
+            /* Common broken image fallback: user's primary green with some overlay text.
+               If image fails, alt text will show with a green background. */
+            color: white;
+            background-color: #418A37;
+            text-align: center;
+            line-height: 150px;
+            font-weight: 600;
+        }
+        .card:hover .video-thumbnail { opacity: 1; transform: scale(1.03); }
+        
+        /* Botón de Play sobre la miniatura, mejorado */
+        .play-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 70px; height: 70px; /* Un poco más grande */
+            background: rgba(65, 138, 55, 0.85); /* Verde R3 con transparencia */
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 2; /* Siempre encima */
+        }
+        .card:hover .play-overlay { background: #418A37; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 25px rgba(65, 138, 55, 0.4); }
+        .play-overlay svg { fill: white; width: 32px; height: 32px; margin-left: 5px; }
+
+        .tag { font-size: 0.8rem; text-transform: uppercase; font-weight: 600; color: #418A37; background-color: #e2e7cb; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; align-self: flex-start;}
+        .tag-exp { color: #22333E; background-color: #b1d4d0; }
+
+        /* Libros / Lecciones */
+        .book-thumbnail { width: 100%; aspect-ratio: 1 / 1; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .book-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover .book-thumbnail img { transform: scale(1.05); }
+        .btn-descargar { margin-top: 15px; padding: 10px; background-color: #f0f0f0; color: #262628; text-align: center; border-radius: 8px; font-weight: 600; transition: all 0.3s; }
+        .card:hover .btn-descargar { background-color: #418A37; color: white; }
+
+        /* Pestañas de Filtro (Videos) */
+        .filter-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .filter-btn { padding: 10px 20px; background-color: white; border: 2px solid #e0e0e0; border-radius: 30px; font-family: 'Poppins', sans-serif; font-weight: 500; color: #555; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .filter-btn:hover { border-color: #b1d4d0; color: #262628; }
+        .filter-btn.active { background-color: #418A37; border-color: #418A37; color: white; box-shadow: 0 4px 10px rgba(65, 138, 55, 0.3); }
+        
+        .filter-item { display: none; }
+        .filter-item.show { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ========================================= */
+        /* 4. MODAL (VENTANA EMERGENTE) PARA VÍDEOS  */
+        /* ========================================= */
+        .video-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 10000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .video-modal-overlay.active { display: flex; opacity: 1; }
+        .video-modal-content {
+            position: relative; width: 90%; max-width: 1000px;
+            aspect-ratio: 16/9; background: #000; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .video-modal-overlay.active .video-modal-content { transform: scale(1); }
+        .close-video-btn {
+            position: absolute; top: -50px; right: 0px; background: none;
+            border: none; color: white; font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-video-btn:hover { color: #418A37; }
+    </style>
+</head>
+<body>
+
+    <div id="iw4lcc" class="navbar">
+    <div data-gjs="navbar" id="ic2h68" class="navbar-cnt">
+      <a href="/" id="if02rl" class="navbar-brand">
+        <img id="ihwzu6" src="imagenes/logo.png" alt="Logo">
+      </a>
+      <div id="ivhcul" class="navbar-menu-toggle" onclick="toggleMenu()">
+        <svg id="icono-hamburguesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25"><path fill="currentColor" d="M16 224h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m416 192H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16m3.17-384H172.83A12.82 12.82 0 0 0 160 44.83v38.34A12.82 12.82 0 0 0 172.83 96h262.34A12.82 12.82 0 0 0 448 83.17V44.83A12.82 12.82 0 0 0 435.17 32m0 256H172.83A12.82 12.82 0 0 0 160 300.83v38.34A12.82 12.82 0 0 0 172.83 352h262.34A12.82 12.82 0 0 0 448 339.17v-38.34A12.82 12.82 0 0 0 435.17 288"></path></svg>
+        <svg id="icono-cerrar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="25" height="25" style="display: none;"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      </div>
+      <div data-gjs="navbar-items" id="igyjaw" class="navbar-items-c">
+        <nav id="ik60dj" class="navbar-menu-nav">
+          <a id="inicio-mov" href="index.html" class="nav-link-movil">Inicio</a>
+          <a id="escuelas-mov" href="mapa.html" class="nav-link-movil">Escuelas</a>
+          <a id="noticias-mov" href="noticias.html" class="nav-link-movil">Noticias</a>
+          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Recursos educativos</a>
+          <a id="cuestionarios-mov" href="Cuestionarios.html" class="nav-link-movil">Cuestionarios</a>
+          <div data-type-role="flex-row" id="ihn2tg" class="gjs-plg-flex-row">
+            <div data-type-role="flex-column" id="if5sw5" class="gjs-plg-flex-column">
+              <a id="inicio-desk" href="index.html"class="nav-link-desk">Inicio</a>
+              <a id="escuelas-desk" href="mapa.html" class="nav-link-desk">Escuelas</a>
+              <a id="noticias-desk" href="noticias.html"class="nav-link-desk">Noticias</a>
+              <a id="videos-desk" href="Videos.html" class="nav-link-desk active">Recursos educativos</a>
+              <a id="cuestionarios-desk" href="Cuestionarios.html" class="nav-link-desk">Cuestionarios</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+    <header class="hero-videos">
+        <h1>Centro de Recursos R3</h1>
+        <p>Explora todo nuestro contenido educativo interactivo: videos explicativos, guías descargables y lecciones paso a paso.</p>
+    </header>
+
+    <div class="main-tabs-container">
+        <button class="main-tab active" onclick="cambiarSeccion('videos')">🎬 Videos</button>
+       <!--  <button class="main-tab" onclick="cambiarSeccion('lecciones')">📝 Lecciones y Guías</button> -->
+        <button class="main-tab" onclick="cambiarSeccion('libros')">📚 Libros Anuales</button>
+    </div>
+
+    <div id="seccion-videos" class="content-section active">
+        <section class="container">
+            <h2 class="section-title">Videos del Proyecto R3</h2>
+            <div id="filtros" class="filter-container">
+                <button class="filter-btn active" onclick="filtrarVideos('todo')"><span></span>Todos</button>
+                <button class="filter-btn" onclick="filtrarVideos('proyecto')">📁 El Proyecto</button>
+                <button class="filter-btn" onclick="filtrarVideos('robotica')">🤖 Robótica</button>
+                <button class="filter-btn" onclick="filtrarVideos('fisica')">⚡ Física</button>
+                <button class="filter-btn" onclick="filtrarVideos('quimica')">🧪 Química/Biología</button>
+            </div>
+
+            <div class="grid-general">
+                
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4#t=1" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">General</span><h4 class="card-title">Presentación del Curso Online</h4></div>
+                </div>
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 1_1 Proyecto R3.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 1_1 Proyecto R3.mp4#t=2" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">General</span><h4 class="card-title">Descripción del Proyecto R3</h4></div>
+                </div>
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 1_2 Cultura de experimentacion remota.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 1_2 Cultura de experimentacion remota.mp4#t=2" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">General</span><h4 class="card-title">Cultura de Experimentación Remota</h4></div>
+                </div>
+
+        
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 2 Experimentos remotos.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 2 Experimentos remotos.mp4#t=2" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Distintos Experimentos Remotos</h4></div>
+                </div>
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque_3.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque_3.mp4#t=2" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Cómo Usar el Experimento en el Aula</h4></div>
+                </div>
+
+                <div class="card filter-item fisica" onclick="abrirVideo('gLlLx5lCG4U', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/gLlLx5lCG4U/maxresdefault.jpg" class="video-thumbnail" alt="Flotabilidad y Arquímedes">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Flotabilidad y Arquímedes</h4></div>
+                </div>
+
+                <div class="card filter-item fisica" onclick="abrirVideo('K806DqM1Gi8', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/K806DqM1Gi8/maxresdefault.jpg" class="video-thumbnail" alt="Muelle">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Experimento con Muelle</h4></div>
+                </div>
+
+                <div class="card filter-item fisica" onclick="abrirVideo('4xI19iM74cA', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/4xI19iM74cA/maxresdefault.jpg" class="video-thumbnail" alt="Péndulo de Galileo">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Péndulo de Galileo</h4></div>
+                </div>
+
+                <div class="card filter-item fisica" onclick="abrirVideo('wv4JablHsDY', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/wv4JablHsDY/maxresdefault.jpg" class="video-thumbnail" alt="Bombillas y AC">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Bombillas y Corriente Alterna</h4></div>
+                </div>
+
+                <div class="card filter-item fisica" onclick="abrirVideo('hChLVjQ4WMc', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/hChLVjQ4WMc/maxresdefault.jpg" class="video-thumbnail" alt="Circuitos básicos en VISIR">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Circuitos básicos en VISIR</h4></div>
+                </div>
+
+                <div class="card filter-item robotica" onclick="abrirVideo('Kf8ql8TOfHM', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/Kf8ql8TOfHM/maxresdefault.jpg" class="video-thumbnail" alt="Robotica Arduino">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Robótica</span><h4 class="card-title">Robótica con Blockly y Arduino</h4></div>
+                </div>
+
+                <div class="card filter-item quimica" onclick="abrirVideo('JR6P0iqHV0g', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/JR6P0iqHV0g/maxresdefault.jpg" class="video-thumbnail" alt="Planarias bebidas">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Biología</span><h4 class="card-title">Planarias y bebidas energéticas</h4></div>
+                </div>
+
+                <div class="card filter-item quimica" onclick="abrirVideo('ZdpWWV156S8', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/ZdpWWV156S8/maxresdefault.jpg" class="video-thumbnail" alt="Radiactividad">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Química</span><h4 class="card-title">Radiactividad</h4></div>
+                </div>
+
+                <div class="card filter-item quimica" onclick="abrirVideo('xsDsMMZtQ9c', true)">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/xsDsMMZtQ9c/maxresdefault.jpg" class="video-thumbnail" alt="Química">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Química</span><h4 class="card-title">Experimentos de Química</h4></div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+   <!--  <div id="seccion-lecciones" class="content-section">
+        <section class="container">
+            <h2 class="section-title">Lecciones Interactivas</h2>
+            <div class="grid-general" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                
+                <a href="https://drive.google.com/file/d/1LW9dng4XogBuEKcv57M0Fcp0KR2yjWA5/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\6.-Acido-base.png" alt="Acido-Base"></div>
+                    <div class="card-info"><h4 class="card-title">Ácido-Base</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1qOyAFOm3lvQMIbPToEAmCESpIeIcjf_9/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\bombilla.jpg" alt="Bombillas en AC"></div>
+                    <div class="card-info"><h4 class="card-title">Bombillas en AC</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1Mi-IRmNkM8TReqP6IuEXYCZ14oKCM42o/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\3d.png" alt="Impresora 3D"></div>
+                    <div class="card-info"><h4 class="card-title">Impresora 3D</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1b3FRpUfvyoda1b6Do92gQWY4kYzcn046/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\Visir.png" alt="Circuitos DC"></div>
+                    <div class="card-info"><h4 class="card-title">Circuitos DC (Visir)</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1HvQ5AkA3dLTkinwcWFXfJr6llA2M0FXk/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\circuitoelectrico.jpeg" alt="Circuitos Eléctricos"></div>
+                    <div class="card-info"><h4 class="card-title">Circuitos Eléctricos</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/16fLNcBMwD8V-CgEMJ88hYSuhbJTyLKIl/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\kirchoff.png" alt="Ley de Ohm"></div>
+                    <div class="card-info"><h4 class="card-title">Ley de Ohm y Kirchhoff</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/166GV-IpoOy1mGfTMEYAWY0BUw_zjpsME/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\resistencia en serie.png" alt="Resistencias"></div>
+                    <div class="card-info"><h4 class="card-title">Resistencias</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1OiPhp9e51HWn7CNjC6eiiaDI0TOIID3k/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\flotabilidad.png" alt="Flotabilidad"></div>
+                    <div class="card-info"><h4 class="card-title">Flotabilidad y Arquímedes</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1HDiPNNS9VHkLSQ6lhbjTwxYhBcruY92e/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\LEY DE BOYLE.png" alt="Ley de Boyle"></div>
+                    <div class="card-info"><h4 class="card-title">Ley de Boyle</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/19_s2_AO4B6w0qqjpuk359aRF9CzcxSqK/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\Pendulo.jpg" alt="Péndulo"></div>
+                    <div class="card-info"><h4 class="card-title">Péndulo de Galileo</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1YgIqRyPlx2z632QtFecFRoQWrFMZLtFl/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\Planarias.jpeg" alt="Planarias"></div>
+                    <div class="card-info"><h4 class="card-title">Planarias</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1o0AzZ9MbwA-Xe0tP-xTTGKtr0rYT6-DO/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\Radiactividad.jpg" alt="Radiactividad"></div>
+                    <div class="card-info"><h4 class="card-title">Radiactividad</h4><div class="btn-descargar">Ver Lección</div></div>
+                </a>
+
+            </div>
+        </section>
+    </div> -->
+
+    <div id="seccion-libros" class="content-section">
+        <section class="container">
+            <h2 class="section-title">Materiales Didácticos Anuales</h2>
+            
+            <div class="grid-general" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                
+                <a href="https://drive.google.com/file/d/1-CVWYnad2hhbutT6yFfBBJvPYa15b-8r/view?usp=drive_link" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2024-2025.jpg" alt="Libro 2024-2025"></div>
+                    <div class="card-info"><span class="tag">Nuevo</span><h4 class="card-title">Materiales 2024/2025</h4><div class="btn-descargar">Abrir PDF</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1Yqmpx9eGbffoKsMIrDlcCX3Mt4lfmJ2E/view" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2023-2024.png" alt="Libro 2023-2024"></div>
+                    <div class="card-info"><h4 class="card-title">Materiales 2023/2024</h4><div class="btn-descargar">Abrir PDF</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1VsCV6oxFDzIGsZh0mFmfiK7vkXoc5RCv/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2022-2023.png" alt="Libro 2022-2023"></div>
+                    <div class="card-info"><h4 class="card-title">Materiales 2022/2023</h4><div class="btn-descargar">Abrir PDF</div></div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1Hqk4D5Fe5PqApr2SeoJFEdx1sBL1GXbs/view?usp=sharing" target="_blank" class="card">
+                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2021-2022.png" alt="Libro 2021-2022"></div>
+                    <div class="card-info"><h4 class="card-title">Materiales 2021/2022</h4><div class="btn-descargar">Abrir PDF</div></div>
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <div id="videoModal" class="video-modal-overlay" onclick="cerrarVideoFuera(event)">
+        <div class="video-modal-content">
+            <button class="close-video-btn" onclick="cerrarVideo()">×</button>
+            <div id="modalVideoContainer" style="width: 100%; height: 100%;">
+                </div>
+        </div>
+    </div>
+       <footer class="footer-section">
+        <div class="footer-wrapper">
+            
+            <div class="footer-col-main">
+                <a href="index.html">
+                    <img src="imagenes/Logo blanco.png" alt="Logo R3 Blanco" class="footer-logo">
+                </a>
+                <p class="footer-desc">Proyecto desarrollado por la Universidad de Deusto y Deusto WebLab para fomentar vocaciones STEM en entornos rurales.</p>
+                
+                <div class="footer-socials">
+                    <a href="mailto:proyecto.r3@deusto.es" class="social-link" title="Enviar Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/proyector3deusto/" class="social-link" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61558793177751" class="social-link" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="mapa.html">Escuelas</a>
+                <a href="recursos.html">Recursos</a>
+                <a href="quienesomos.html">¿Quiénes somos?</a>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Información</h4>
+                <a href="contacto.html">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+
+            <div class="footer-col-links" style="flex: 1 1 250px;">
+                <h4>Financiación y Apoyo</h4>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px; background: white; padding: 10px; border-radius: 10px;">
+                    <img src="imagenes/Socios/Deusto_2.png" alt="Deusto" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Sabadell.png" alt="Sabadell" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Siemens.2.png" alt="Siemens" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/labsland.png" alt="LabsLand" style="height: 35px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                © 2026. Proyecto R3 - Todos los derechos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Lógica del Menú Móvil (Navbar)
+        function toggleMenu() {
+            const menu = document.getElementById('igyjaw');
+            const iconoHamburguesa = document.getElementById('icono-hamburguesa');
+            const iconoCerrar = document.getElementById('icono-cerrar');
+            if (menu.classList.contains('abierto')) {
+                menu.classList.remove('abierto');
+                iconoHamburguesa.style.display = 'block'; 
+                iconoCerrar.style.display = 'none'; 
+            } else {
+                menu.classList.add('abierto');
+                iconoHamburguesa.style.display = 'none'; 
+                iconoCerrar.style.display = 'block'; 
+            }
+        }
+
+        // Lógica de Pestañas Principales (Videos, Libros, Lecciones)
+        function cambiarSeccion(seccionId) {
+            document.querySelectorAll('.content-section').forEach(function(sec) {
+                sec.classList.remove('active');
+            });
+            document.querySelectorAll('.main-tab').forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.getElementById('seccion-' + seccionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Lógica de Filtro de Categorías (solo para los videos)
+        function filtrarVideos(categoria) {
+            let elementos = document.getElementsByClassName("filter-item");
+            
+            for (let i = 0; i < elementos.length; i++) {
+                elementos[i].classList.remove("show");
+                if (categoria === 'todo' || elementos[i].classList.contains(categoria)) {
+                    elementos[i].classList.add("show");
+                }
+            }
+
+            let botones = document.getElementById("filtros").getElementsByClassName("filter-btn");
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].classList.remove("active");
+                if (botones[i].getAttribute('onclick').includes(categoria)) {
+                    botones[i].classList.add("active");
+                }
+            }
+        }
+
+        // Lógica de la Ventana Emergente (Modal) para Videos
+        const videoModal = document.getElementById('videoModal');
+        const modalVideoContainer = document.getElementById('modalVideoContainer');
+
+        function abrirVideo(fuente, esYoutube) {
+            videoModal.classList.add('active');
+            
+            if (esYoutube) {
+                // Inserta el Iframe de YouTube con Autoplay
+                modalVideoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${fuente}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; border-radius:12px;"></iframe>`;
+            } else {
+                // Inserta un reproductor para los vídeos locales (.mp4)
+                modalVideoContainer.innerHTML = `<video controls autoplay style="width:100%; height:100%; border-radius:12px; background:black;"><source src="${fuente}" type="video/mp4"></video>`;
+            }
+        }
+
+        function cerrarVideo() {
+            videoModal.classList.remove('active');
+            // Eliminar el HTML vacía el iframe/video para cortar la reproducción
+            setTimeout(() => { modalVideoContainer.innerHTML = ''; }, 300);
+        }
+
+        function cerrarVideoFuera(event) {
+            if (event.target === videoModal) {
+                cerrarVideo();
+            }
+        }
+
+        // Al cargar la página, ejecutar el filtro "todo"
+        document.addEventListener('DOMContentLoaded', function() {
+            filtrarVideos('todo');
+        });
+    </script>
+    <div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <img src="imagenes/logo2.png" alt="avatar" id="chat-avatar" style="background-color: white;">
+      <span id="chat-title">Asistente IA ProyectoR3</span>
+      <button id="chat-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <input type="text" id="userMessage" placeholder="Escribe algo..." />
+      <button id="send-btn" onclick="sendMessage()">
+        </button>
+    </div>
+  </div>
+  <div id="chat-button">
+    </div>
+</div>
+</body>
+</html>

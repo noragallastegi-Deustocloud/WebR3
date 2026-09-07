@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto R3 - Datos Iniciales</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2" alt="Logo R3"/>
+            <img src="Recursos/Logos/Deusto.jpg" class="Deusto" alt="Logo Deusto"/>
+        </div>
+        
+        <div class="second-text">
+            <h1 class="encabezado1">ANTES DE COMENZAR...</h1>
+            <form id="sheetdb-form">
+                <div class="form-group">
+                    <label for="colegio">Centro Escolar</label>
+                    <input type="text" id="colegio" name="data[colegio]" placeholder="Introduce el nombre de tu centro escolar" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="profesor">Nombre del docente</label>
+                    <input type="text" id="profesor" name="data[profesor]" placeholder="Introduce el nombre de tu docente" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="data[edad]" maxlength="2" min="0" max="99" placeholder="Introduce tu edad" oninput="validarEdad()" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experimento">Experimento utilizado</label>
+                    <input type="text" id="experimento" name="data[experimento]" placeholder="Introduce el nombre del experimento remoto utilizado" required>
+                </div>
+
+                <div class="button-container" style="position: static; margin-top: 30px;">
+                    <button class="buttonatras" type="button" onclick="window.location.href='1_Consentimiento.html'">ATRÁS</button>
+                    <button class="button" type="button" onclick="guardarDatos()">SIGUIENTE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validarEdad() {
+            var edadInput = document.getElementById("edad");
+            if (edadInput.value.length > 2) {
+                edadInput.value = edadInput.value.slice(0, 2);
+            }
+        }
+
+        function guardarDatos() {
+            var colegioInput = document.getElementById('colegio').value.trim();
+            var profesorInput = document.getElementById('profesor').value.trim();
+            var edadInput = document.getElementById('edad').value.trim();
+            var experimentoInput = document.getElementById('experimento').value.trim();
+
+            if (colegioInput && profesorInput && edadInput && experimentoInput) {
+                var fecha = new Date();
+                var fechaFormateada = fecha.toISOString().split('T')[0];
+                var horaFormateada = fecha.toTimeString().split(' ')[0];
+
+                // Guardar en sessionStorage
+                sessionStorage.setItem('colegio', colegioInput);
+                sessionStorage.setItem('profesor', profesorInput);
+                sessionStorage.setItem('edad', edadInput);
+                sessionStorage.setItem('experimento', experimentoInput);
+                sessionStorage.setItem('fecha', fechaFormateada);
+                sessionStorage.setItem('comienzo', horaFormateada);
+
+                // Redirigir a la primera pregunta de satisfacción
+                window.location.href = '3_Pregunta1.html';
+            } else {
+                alert('Por favor, completa todos los campos antes de continuar.');
+            }
+        }
+    </script>
+</body>
+</html>

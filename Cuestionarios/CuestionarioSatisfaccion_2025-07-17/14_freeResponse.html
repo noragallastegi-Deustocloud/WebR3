@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+    <style>
+        .text-input-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .text-input {
+            width: 80%;
+            height: 150px;
+            padding: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            resize: vertical;
+
+        }
+        
+        .instruction {
+            font-family: 'Poppins', sans-serif;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .second-text p,
+        .second-text h1 {
+            margin-bottom: 5px;
+}
+
+    </style>
+</head>
+<body>
+   <div class="container">
+    <div class="container1"> 
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div>
+
+        <div class="second-text">
+            <h1 class="encabezado1">Comentarios adicionales</h1>
+            <p class="pregunta" style="line-height:2;  font-size: clamp(10px, 1.5vw, 35px);">¿Tienes alguna opinión, sugerencia o comentario que quieras compartir con nosotros?</p>
+           
+        </div>
+
+        <div class="text-input-container">
+            <textarea class="text-input" id="freeResponse" placeholder="Escribe aquí tus comentarios..."></textarea>
+        </div>
+    </div>
+    <div class="slider-container2">
+                <input type="range" min="1" id="progreso" class="slider2" disabled>
+                <p id="progreso-texto" class="body"></p>
+    </div>
+
+    <div class="container "> 
+        <div class="button-container">
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <button class="button" id="nextButton" onclick="goToNextPage()">SIGUIENTE</button>
+        </div>
+    </div>
+
+    <script>
+        function goToNextPage() {
+            const freeResponse = document.getElementById('freeResponse').value;
+            
+            // Guardar la respuesta en sessionStorage
+            sessionStorage.setItem('freeResponse', freeResponse);
+            
+            // Redirigir a la página prefinal
+            window.location.href = "15_Prefinal.html";
+        }
+
+        function goToPreviousPage() {
+            window.location.href = "13_Pregunta11.html";
+        }
+
+        window.onload = function() {
+            // Cargar respuesta previa si existe
+            const savedResponse = sessionStorage.getItem('freeResponse');
+            if (savedResponse) {
+                document.getElementById('freeResponse').value = savedResponse;
+            }
+        };
+        const preguntaActual = 12; // <-- cambia este valor dinámicamente en cada página
+        const progresoaActual = preguntaActual -1; 
+        const totalPreguntas = 12;
+
+        const slider = document.getElementById('progreso');
+        const texto = document.getElementById('progreso-texto');
+
+        // Configurar el slider
+        slider.max = totalPreguntas;
+        slider.value = preguntaActual;
+
+        // Calcular porcentaje para fondo dinámico
+        const porcentaje = (progresoaActual / totalPreguntas) * 100;
+        slider.style.background = `linear-gradient(to right, #4CAF50 ${porcentaje}%, #ddd ${porcentaje}%)`;
+
+        // Mostrar texto
+        texto.textContent = `Pregunta ${preguntaActual} de ${totalPreguntas}`;
+    </script>
+</body>
+</html>

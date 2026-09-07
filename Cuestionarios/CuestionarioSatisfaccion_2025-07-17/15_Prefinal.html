@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+    <div class="container" style="padding-right: 20px;"> 
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div>
+        <h1 class="encabezado1" style="text-align: justify;" >¡Has finalizado el cuestionario!</h1>
+        <p class="body" style="line-height: 2;text-align: justify;">Antes de enviarlo, puedes verificar que todas tus respuestas son correctas.</p>
+        <p class="body" style="line-height: 2;text-align: justify;" >Una vez que hagas clic en el botón para enviar, no podrás regresar para hacer cambios,</p>
+        <p class="body" style="line-height: 2;text-align: justify;" >ya que tus respuestas serán enviadas al servidor.</p>
+        
+        <div class="slider-container2">
+                <input type="range" min="1" id="progreso" class="slider2" disabled>
+                <p id="progreso-texto" class="body" style="color: white;"></p>
+        </div>
+        <div class="button-container">
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <button id="enviarBtn" class="button" onclick="validateSelection()"><div id="enviar" style="display: block;">ENVIAR</div><div id="cargando" style="display: none;">Enviando datos...</div> </button>
+            <!-- Símbolo de carga -->
+
+        </div>
+
+    </div>
+
+    <script>
+        // Función para validar la selección antes de continuar
+        function validateSelection() {
+            // Llamar directamente a la función de enviar datos sin validar selección
+            enviarDatosFinales();
+        }
+    
+        // Función para enviar datos finales a la API
+        function enviarDatosFinales() {
+            const enviarBtn = document.getElementById('enviarBtn');
+            const enviar = document.getElementById('enviar');
+            const cargando = document.getElementById('cargando');
+    
+            // Desactiva el botón y muestra el símbolo de carga
+            enviarBtn.disabled = true;
+            enviar.style.display = "none";
+            cargando.style.display = "block";
+    
+            const data = {
+                colegio: sessionStorage.getItem('colegio'),
+                profesor: sessionStorage.getItem('profesor'),
+                fecha: sessionStorage.getItem('fecha'),
+                edad: sessionStorage.getItem('edad'),
+                comienzo: sessionStorage.getItem('comienzo'),
+                experimento:sessionStorage.getItem('experimento'),
+                r1: sessionStorage.getItem('satisfaction1'),
+                r2: sessionStorage.getItem('satisfaction2'),
+                r3: sessionStorage.getItem('satisfaction3'),
+                r4: sessionStorage.getItem('satisfaction4'),
+                r5: sessionStorage.getItem('satisfaction5'),
+                r6: sessionStorage.getItem('satisfaction6'),
+                r7: sessionStorage.getItem('satisfaction7'),
+                r8: sessionStorage.getItem('satisfaction8'),
+                r9: sessionStorage.getItem('satisfaction9'),
+                r10: sessionStorage.getItem('satisfaction10'),
+                r11: sessionStorage.getItem('satisfaction11'),
+                r12: sessionStorage.getItem('freeResponse')
+            };
+
+            console.log("Enviando datos a la API:", data);
+    
+            fetch("https://sheetdb.io/api/v1/489tyk5a0v6tr?sheet=Satisfaccion", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error en la respuesta de la API");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Respuesta de la API recibida:", data);
+                window.location.href = "16_Agradeciemiento.html";
+            })
+            .catch(error => {
+                console.error("Error al enviar los datos:", error);
+                alert("Hubo un problema al enviar los datos. Por favor, revisa la consola para más detalles.");
+            });
+
+        }
+    
+        function goToPreviousPage() {
+            window.location.href = "14_freeResponse.html";
+        }
+    // Variables reutilizables
+        const preguntaActual = 13; // <-- cambia este valor dinámicamente en cada página
+        const progresoaActual = preguntaActual -1; 
+        const totalPreguntas = 12;
+
+        const slider = document.getElementById('progreso');
+        const texto = document.getElementById('progreso-texto');
+
+        // Configurar el slider
+        slider.max = totalPreguntas;
+        slider.value = preguntaActual;
+
+        // Calcular porcentaje para fondo dinámico
+        const porcentaje = (progresoaActual / totalPreguntas) * 100;
+        slider.style.background = `linear-gradient(to right, #4CAF50 ${porcentaje}%, #ddd ${porcentaje}%)`;
+
+        // Mostrar texto
+        texto.textContent = `Pregunta ${preguntaActual} de ${totalPreguntas}`;
+        </script>
+        
+    </script>
+    
+</body>
+</html>

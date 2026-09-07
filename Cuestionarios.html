@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cuestionarios - Proyecto R3</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ChatIA/chat.css">
+   <link rel="stylesheet" href="style_index.css">
+    <script src="ChatIA/chat.js" defer></script>
+    <!--Bloque para rastreo de interacciones-->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wfaoqmmw8z");
+    </script>
+    
+    <style>
+        body {
+            padding-top: 100px;
+        }
+
+        /* ========================================= */
+        /* 2. CABECERA HERO (Igual que en Recursos)  */
+        /* ========================================= */
+        .hero-cuestionarios {
+            text-align: center;
+            padding: 60px 20px;
+            /* Mismo degradado que elegiste para "Recursos" */
+            background: linear-gradient(135deg, #27633D 0%, #5ba651d5 100%);
+            border-radius: 0 0 3rem 3rem;
+            margin-top: -100px; 
+            padding-top: 140px;
+            margin-bottom: 50px;
+        }
+        .hero-cuestionarios h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #ffff; margin: 0; font-weight: 700; }
+        .hero-cuestionarios p { font-size: 1.2rem; color: #ffff; max-width: 800px; margin: 15px auto 0; line-height: 1.6;}
+
+        /* ========================================= */
+        /* 3. SECCIÓN DE CUESTIONARIOS (GRID LIMPIA) */
+        /* ========================================= */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 80px; }
+        
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px 30px; /* Más espacio vertical entre filas */
+            justify-items: center; 
+            padding-top: 20px;
+        }
+
+        /* Tarjeta Invisible (Solo Imagen y Texto) */
+        .quiz-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: #22333E;
+            width: 100%;
+            max-width: 250px;
+            transition: transform 0.3s ease;
+        }
+        
+        .quiz-item:hover { 
+            transform: translateY(-8px); 
+        }
+
+        .quiz-icon {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+            /* La imagen ya tiene su propio círculo verde, así que no añadimos fondo aquí */
+        }
+
+        .quiz-item:hover .quiz-icon {
+            transform: scale(1.05) rotate(2deg); /* Pequeño efecto dinámico al pasar el ratón */
+        }
+
+        .quiz-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin: 0;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .quiz-item:hover .quiz-title {
+            color: #418A37;
+        }
+
+        /* ========================================= */
+        /* 4. FOOTER (Igual que en el Index original)*/
+        /* ========================================= */
+        .footer-section {
+            background-color: #31682b;
+            color: white;
+            padding: 40px 0 20px 0;
+            margin-top: 50px;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-wrapper {
+            max-width: 1200px; margin: 0 auto; width: 90%;
+            display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;
+        }
+        
+        .footer-col-main { flex: 1 1 300px; display: flex; flex-direction: column; gap: 15px; }
+        .footer-logo { width: 120px; margin-bottom: 10px; }
+        .footer-desc { font-size: 0.95rem; line-height: 1.6; color: #ccc; margin: 0 0 15px 0; }
+        
+        .footer-socials { display: flex; gap: 15px; }
+        .social-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s ease; }
+        .social-link:hover { background: #69CDBB; color: #1B1D20; transform: translateY(-3px); }
+        .social-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .footer-col-links { flex: 1 1 150px; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col-links h4 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; margin: 0 0 10px 0; color: white; font-weight: 700; }
+        .footer-col-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .footer-col-links a:hover { color: #69CDBB; }
+
+        .footer-copyright { width: 100%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px; color: #888; font-size: 0.9rem; }
+
+    </style>
+</head>
+<body>
+
+    <div id="iw4lcc" class="navbar">
+    <div data-gjs="navbar" id="ic2h68" class="navbar-cnt">
+
+      <!-- Logo -->
+      <a href="/" id="if02rl" class="navbar-brand">
+        <img id="ihwzu6" src="imagenes/logo.png" alt="Logo">
+      </a>
+
+      <!-- Botón navegador movil-->
+      <div id="ivhcul" class="navbar-menu-toggle" onclick="toggleMenu()">
+        <svg id="icono-hamburguesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="25" height="25"><path fill="currentColor" d="M16 224h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m416 192H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16m3.17-384H172.83A12.82 12.82 0 0 0 160 44.83v38.34A12.82 12.82 0 0 0 172.83 96h262.34A12.82 12.82 0 0 0 448 83.17V44.83A12.82 12.82 0 0 0 435.17 32m0 256H172.83A12.82 12.82 0 0 0 160 300.83v38.34A12.82 12.82 0 0 0 172.83 352h262.34A12.82 12.82 0 0 0 448 339.17v-38.34A12.82 12.82 0 0 0 435.17 288"></path></svg>
+        <svg id="icono-cerrar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="25" height="25" style="display: none;"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      </div>
+
+      <!-- Menú de navegación -->
+      <div data-gjs="navbar-items" id="igyjaw" class="navbar-items-c">
+        <nav id="ik60dj" class="navbar-menu-nav">
+
+          <!-- ENLACES MÓVIL -->
+          <a id="inicio-mov" href="index.html" class="nav-link-movil">Inicio</a>
+          <a id="escuelas-mov" href="mapa.html" class="nav-link-movil">Escuelas</a>
+          <a id="noticias-mov" href="noticias.html" class="nav-link-movil">Noticias</a>
+          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Recursos educativos</a>
+          <a id="cuestionarios-mov" href="Cuestionarios.html" class="nav-link-movil">Cuestionarios</a>
+
+          <!-- ENLACES ESCRITORIO -->
+          <div data-type-role="flex-row" id="ihn2tg" class="gjs-plg-flex-row">
+            <div data-type-role="flex-column" id="if5sw5" class="gjs-plg-flex-column">
+              <a id="inicio-desk" href="index.html"class="nav-link-desk">Inicio</a>
+              <a id="escuelas-desk" href="mapa.html" class="nav-link-desk">Escuelas</a>
+              <a id="noticias-desk" href="noticias.html"class="nav-link-desk">Noticias</a>
+              <a id="videos-desk" href="Videos.html" class="nav-link-desk">Recursos educativos</a>
+              <a id="cuestionarios-desk" href="Cuestionarios.html" class="nav-link-desk">Cuestionarios</a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+
+    <header class="hero-cuestionarios">
+        <h1>Cuestionarios</h1>
+        <p>Realizamos cuestionarios sobre los experimentos para evaluar si el uso del laboratorio remoto favorece el aprendizaje. Deberás completar un <strong>pretest</strong> (antes) y un <strong>posttest</strong>. </p>
+    </header>
+
+    <section class="container">
+        <div class="quiz-grid">
+            
+            <a href="Cuestionarios\CuestionarioSatisfaccion_2025-07-17\0_Portada.html" class="quiz-item">
+                <img src="imagenes\Cuestionarios\satisfacción.svg" class="quiz-icon" alt="Icono Satisfacción">
+                <h3 class="quiz-title">Cuestionario de Satisfacción</h3>
+            </a>
+
+            <a href="Cuestionarios\Planarias_V10\0_Portada.html" class="quiz-item">
+                <img src="imagenes\Cuestionarios\Planrias.svg" class="quiz-icon" alt="Icono Planarias">
+                <h3 class="quiz-title">Cuestionario de Planarias</h3>
+            </a>
+
+            <a href="Cuestionarios\CaidaLibre_2025-02-12\0_Portada.html" class="quiz-item">
+                <img src="imagenes\Cuestionarios\Caída Libre.svg" class="quiz-icon" alt="Icono Caída Libre">
+                <h3 class="quiz-title">Cuestionario de Caída Libre</h3>
+            </a>
+
+            <a href="Cuestionarios\Pendulo_2026-1-20\0_Portada.html" class="quiz-item">
+                <img src="imagenes\Cuestionarios\pendulo.svg" class="quiz-icon" alt="Icono Péndulo">
+                <h3 class="quiz-title">Cuestionario de Péndulo</h3>
+            </a>
+
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-wrapper">
+            
+            <div class="footer-col-main">
+                <a href="index.html">
+                    <img src="imagenes/Logo blanco.png" alt="Logo R3 Blanco" class="footer-logo">
+                </a>
+                <p class="footer-desc">Proyecto desarrollado por la Universidad de Deusto y Deusto WebLab para fomentar vocaciones STEM en entornos rurales.</p>
+                
+                <div class="footer-socials">
+                    <a href="mailto:proyecto.r3@deusto.es" class="social-link" title="Enviar Email">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/proyector3deusto/" class="social-link" target="_blank" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61558793177751" class="social-link" target="_blank" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="mapa.html">Escuelas</a>
+                <a href="recursos.html">Recursos</a>
+                <a href="quienesomos.html">¿Quiénes somos?</a>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Información</h4>
+                <a href="contacto.html">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+
+            <div class="footer-col-links" style="flex: 1 1 250px;">
+                <h4>Financiación y Apoyo</h4>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px; background: white; padding: 10px; border-radius: 10px;">
+                    <img src="imagenes/Socios/Deusto_2.png" alt="Deusto" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Sabadell.png" alt="Sabadell" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/Siemens.2.png" alt="Siemens" style="height: 35px; object-fit: contain;">
+                    <img src="imagenes/Socios/labsland.png" alt="LabsLand" style="height: 35px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                © 2026. Proyecto R3 - Todos los derechos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Menú Móvil
+        function toggleMenu() {
+            const menu = document.getElementById('igyjaw');
+            const iconoHamburguesa = document.getElementById('icono-hamburguesa');
+            const iconoCerrar = document.getElementById('icono-cerrar');
+            if (menu.classList.contains('abierto')) {
+                menu.classList.remove('abierto');
+                iconoHamburguesa.style.display = 'block'; iconoCerrar.style.display = 'none'; 
+            } else {
+                menu.classList.add('abierto');
+                iconoHamburguesa.style.display = 'none'; iconoCerrar.style.display = 'block'; 
+            }
+        }
+    </script>
+    <div id="chat-widget">
+  <div id="chat-box">
+    <div id="chat-header">
+      <img src="imagenes/logo2.png" alt="avatar" id="chat-avatar" style="background-color: white;">
+      <span id="chat-title">Asistente IA ProyectoR3</span>
+      <button id="chat-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <input type="text" id="userMessage" placeholder="Escribe algo..." />
+      <button id="send-btn" onclick="sendMessage()">
+        </button>
+    </div>
+  </div>
+  <div id="chat-button">
+    </div>
+</div>
+</body>
+</html>

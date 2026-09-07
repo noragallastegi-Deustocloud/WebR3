@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <div class="container1"> 
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div>
+
+        <div class="second-text">
+            <h1 class="encabezado1">Pregunta 1</h1>
+            <p class="pregunta" style="line-height:2;">Me ha gustado el experimento remoto utilizado</p>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" min="1" max="5" step="1" value="3" class="slider" id="satisfactionSlider" oninput="updateSlider()">
+            <div class="labels">
+                <span id="label1" class="body">Muy en Desacuerdo</span>
+                <span id="label2" class="body">Desacuerdo</span>
+                <span id="label3" class="body">Neutral</span>
+                <span id="label4" class="body">De Acuerdo</span>
+                <span id="label5" class="body">Muy de Acuerdo</span>
+            </div>
+        </div>
+    </div>
+    <div class="slider-container2">
+        <input type="range" min="1" id="progreso" class="slider2" disabled>
+        <p id="progreso-texto" class="body"></p>
+    </div>
+
+    <div class="container1"> 
+        <div class="button-container">
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <button class="button" id="nextButton" disabled onclick="goToNextPage()">SIGUIENTE</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function updateSlider() {
+            const slider = document.getElementById('satisfactionSlider');
+            const nextButton = document.getElementById('nextButton');
+
+            // Habilitar el botón "Siguiente" solo después de mover el slider
+            if (slider.value != 3) {  // El valor inicial es 3, por lo que solo habilitamos después de moverlo
+                nextButton.disabled = false;
+            }
+
+            // Calcular el porcentaje para el fondo
+            const percentage = ((slider.value - 1) / 4) * 100;
+            slider.style.background = `linear-gradient(to right, #4CAF50 ${percentage}%, #ddd ${percentage}%)`;
+
+            // Guardar el valor del slider en sessionStorage
+            sessionStorage.setItem('satisfaction1', slider.value);
+
+            // Log para depuración
+            console.log("Satisfaction Level:", slider.value);
+        }
+
+        function goToNextPage() {
+            const sliderValue = sessionStorage.getItem('satisfaction1');
+            if (sliderValue) {
+                window.location.href = "4_Pregunta2.html";  // Redirigir a la siguiente página
+            } else {
+                alert("Por favor, selecciona un nivel de satisfacción antes de continuar.");
+            }
+        }
+
+        function goToPreviousPage() {
+            window.location.href = "4_Pregunta2.html";  // Redirigir a la página anterior
+        }
+
+        window.onload = function() {
+            const savedValue = sessionStorage.getItem('satisfaction1');
+            const slider = document.getElementById('satisfactionSlider');
+            if (savedValue) {
+                slider.value = savedValue;
+                document.getElementById('nextButton').disabled = false;
+
+                // Actualizar el fondo con el valor guardado
+                const percentage = ((slider.value - 1) / 4) * 100;
+                slider.style.background = `linear-gradient(to right, #4CAF50 ${percentage}%, #ddd ${percentage}%)`;
+            }
+        };
+
+        // Función para enviar todas las respuestas al final
+        function submitAllAnswers() {
+            // Recolectar todas las respuestas guardadas
+            const answers = {
+                r1: sessionStorage.getItem('satisfaction1'),
+                r2: sessionStorage.getItem('satisfaction2'),  // Ejemplo de una segunda respuesta
+                r3: sessionStorage.getItem('satisfaction3'),
+                // Agregar más respuestas para las otras preguntas aquí
+            };
+
+            // Verificar si todas las respuestas están disponibles
+            for (let key in answers) {
+                if (!answers[key]) {
+                    alert("Por favor, responde todas las preguntas antes de enviar.");
+                    return;
+                }
+            }
+
+            // Realizar la solicitud POST a SheetDB
+            fetch('https://sheetdb.io/api/v1/eev576a786mgb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(answers)  // Enviar todas las respuestas en el cuerpo de la solicitud
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("¡Respuestas enviadas correctamente!");
+                console.log(data);  // Ver la respuesta del servidor
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("Hubo un error al enviar las respuestas. Intenta nuevamente.");
+            });
+        }
+        // Variables reutilizables
+    const preguntaActual = 1; // <-- cambia este valor dinámicamente en cada página
+    const progresoaActual = preguntaActual -1; 
+    const totalPreguntas = 12;
+
+    const slider = document.getElementById('progreso');
+    const texto = document.getElementById('progreso-texto');
+
+    // Configurar el slider
+    slider.max = totalPreguntas;
+    slider.value = preguntaActual;
+
+    // Calcular porcentaje para fondo dinámico
+    const porcentaje = (progresoaActual / totalPreguntas) * 100;
+    slider.style.background = `linear-gradient(to right, #4CAF50 ${porcentaje}%, #ddd ${porcentaje}%)`;
+
+    // Mostrar texto
+    texto.textContent = `Pregunta ${preguntaActual} de ${totalPreguntas}`;
+    </script>
+</body>
+</html>
+
