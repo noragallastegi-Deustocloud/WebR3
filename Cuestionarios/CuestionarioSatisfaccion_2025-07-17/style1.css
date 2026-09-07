@@ -1,0 +1,751 @@
+/* Portada */
+.titulo1 {
+    font-weight: 800; /* Grosor definido */
+    font-size: clamp(60px, 7.5vw, 120px);
+    text-align: right;
+    font-family: "Baloo Thambi 2", sans-serif;
+    color: #38752F;
+    line-height: 1; /* Ajusta el valor según lo necesites */
+    margin-top:6%;
+    margin-bottom: 0.07em; /* Ajusta este valor según lo necesites */
+    
+}
+.titulo2 {
+    font-weight: 300; /* Grosor definido */
+    font-size: 3.7vw;
+    text-align: right;
+    font-family: "Manrope", sans-serif;
+    color: #38752F;
+    line-height: 1; /* Ajusta el valor según lo necesites */
+    margin-top:0; /* Ajusta este valor según lo necesites */
+}
+.body {
+    padding-top: 0.05px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300; /* Grosor definido */
+    font-size: clamp(16px, 1.5vw, 30px);
+    line-height: 1.8; /* Ajusta el valor según sea necesario */
+    margin-top: 0;
+    
+}
+
+/* Ajuste del contenedor para ocupar toda la pantalla y evitar scroll */
+
+.body2 {
+    padding-top: 0.05px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300; /* Grosor definido */
+    font-size: clamp(16px, 1.1vw, 30px);
+    line-height: 1.5vw; /* Ajusta el valor según sea necesario */
+    margin-top: 0;
+    
+    text-align: justify;
+    white-space: pre-line; /* Respeta los saltos de línea en el texto */ 
+}
+
+.aceptar-container{
+    display: grid; /* Activa el diseño de grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    gap: -1%; /* Espacio entre las columnas */
+    margin-left: -6%; /* Alinea las columnas con los párrafos */
+    margin-top: 1%;
+
+}
+/* Ajuste del contenedor para ocupar toda la pantalla y evitar scroll */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Desactiva el desplazamiento */
+    box-sizing: border-box; /* Asegura que el tamaño incluya bordes y rellenos */
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px 80px 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    box-sizing: border-box;
+}
+
+/* Cabecera / Logos */
+.logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; 
+    padding-top: 10px;
+}
+.R3Logo2 { width: clamp(90px, 8vw, 120px); }
+.Deusto { width: clamp(110px, 15vw, 180px); }
+
+.container1 {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1%;
+    text-align: center;
+}
+
+.container2 {
+    width: 20vw;
+    margin: 0 auto;
+    padding-top: 1%;
+    
+}
+
+.container4 {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 1%;
+    text-align: left;
+}
+.container5 {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 3%;
+    text-align: left;
+    padding-left: 2%;
+}
+
+
+/* Estilo del botón */
+
+
+.buttonatras-container {
+    position: absolute; /* Posiciona el botón en relación al contenedor principal */
+    top: 30px; /* Ajusta la distancia desde la parte superior */
+    left: 60px; /* Ajusta la distancia desde el borde izquierdo */
+    z-index: 10; /* Asegúrate de que esté sobre otros elementos si es necesario */
+}
+
+
+.buttonatras:hover{
+    transform: scale(1.1);
+}
+
+.boton3 {
+    display: inline-block; /* Permite que funcione como botón */
+    background-color: #408d36;
+    color: white;
+    text-decoration: none; /* Elimina la línea debajo del texto */
+    border: none;
+    border-radius: 40px;
+    padding: 20px 80px;
+    font-size: 1.8vw;
+    font-family: "Baloo Thambi 2", sans-serif;
+    font-weight: 800;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.boton1:hover {
+    transform: scale(1.1);
+}
+.boton3:hover {
+    transform: scale(1.1);
+}
+.boton1 a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+.logos {
+    display: flex;
+    justify-content: flex-start; /* Alinear el logo a la izquierda */
+    align-items: center;
+    width: 97%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    margin-bottom: 0; /* Ajustar el margen inferior si es necesario */
+    margin-top: 0%; /* Reducir el margen superior aquí */
+    padding-left: 1%;
+}
+
+.Deusto {
+    width: 12vw;
+}
+
+.R3Logo{
+    width: 10vw;
+    padding-top: 0%;
+    padding-right: 9%;
+}
+.R3Logo2 {
+    width:  width: clamp(90px, 8vw, 120px);
+    padding-top: 0%;
+    padding-right: 9%;
+}
+
+
+/* Datos */
+.encabezado1 {
+    font-weight: 800; /* Grosor definido */
+    font-size: clamp(30px,2.9vw,40px);
+    font-family: "Baloo Thambi 2", sans-serif;
+    color: black;
+    padding-top: 0.05%;
+    padding-bottom: 1%;
+    margin-bottom: 5px; /* Reducir el margen inferior aquí */
+    line-height: 2.6vw;
+
+}
+
+
+
+.option-container {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.option-container input[type="radio"] {
+    margin-right: 10px;
+}
+
+.option-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.option-button.reject {
+    background-color: #f44336; /* Color rojo */
+}
+
+
+
+/* Ajustes adicionales para contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+    padding-left: 5%;
+  
+    padding-top: 3%;
+}
+
+.container3{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    padding-left: 10%;
+    padding-top: 3%;
+
+}
+
+.container2 {
+    padding-left: 10%;
+    padding-top: 5%;
+    width: 100%;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column; /* Orientación vertical para los campos de entrada */
+    gap: 20px; /* Espacio entre los grupos de label e input */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Estilo para las etiquetas */
+.form-group label {
+    margin-bottom: 5px;
+    margin-right: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 450; /* Grosor definido */
+    font-size: 2vw;
+    line-height: 1.5;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Esto permite que el campo de entrada ocupe el espacio restante */
+}
+
+/* Estilo para los campos de entrada */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"] {
+    padding: 8px;
+    border-radius: 25px; /* Bordes redondeados */
+    border: 3px solid #ccc; /* Borde del input */
+    box-sizing: border-box;
+    height: 40px;
+    padding-left: 30px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200; /* Grosor definido */
+    font-size: 1.5vw; /* Ajustado a 1.8vw para mejor visualización */
+}
+
+
+
+#formulario button {
+    display: flex; /* Utilizar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-decoration: none;
+    background-color: #408d36;
+    color: white;
+    border: none; /* Eliminar borde */
+    border-radius: 30px;
+    transition: 0.2s ease;
+    margin-left: 6.5%;
+    width: 300px;
+    height: 60px;
+    font-size: 25px;
+    font-family: "Baloo Thambi 2", sans-serif; /* Asegurar que la fuente se aplica también aquí */
+    font-weight: 800; /* Grosor definido */
+}
+
+#formulario button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón en hover */
+}
+
+/* Opcional: estilo del enlace en el botón */
+#formulario button a {
+    color: white;
+    text-decoration: none;
+}
+/* Contenedor de la pregunta */
+.question-container {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    width: 90%;
+}
+
+/* Texto de la pregunta */
+.question-text {
+    flex: 1;
+    padding-right: 10px;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: auto;
+    font-size: 2vw; 
+}
+ #recordatorio {
+    font-size: clamp(12px, 1.3vw, 20px)
+    margin-bottom: 5px; /* Reduce este valor para minimizar el espacio */
+}
+
+
+
+/* Video de la pregunta */
+.question-video {
+    width: 175px;
+    height:  175px;
+    padding-left: 1%;
+}
+
+/* Contenedor del segundo párrafo */
+.second-text {
+    padding-left: 0; /* Mantener alineado el texto */
+    padding-right: 10px;
+    text-align: left;
+    width: 90%;
+    padding-left: 20px;
+    
+}
+
+.pregunta{
+    padding-top: 0.05px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300; /* Grosor definido */
+    font-size: clamp(20px, 2vw, 45px);
+    line-height: 1.8; /* Ajusta el valor según sea necesario */
+    margin-top: 0;
+    text-align: center;
+
+}
+
+/* Contenedor de las opciones */
+.options-container {
+    display: flex;
+    justify-content: center; /* Centra las opciones horizontalmente */
+    align-items: center; /* Alinea las opciones verticalmente */
+    flex-wrap: wrap; /* Permite que las opciones se envuelvan si es necesario */
+    gap: 2%; /* Espacio dinámico entre opciones */
+    padding-bottom: 10%;
+    width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+    box-sizing: border-box; /* Incluye padding en las dimensiones */
+}
+
+
+
+
+/* Cada opción */
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: auto; /* Mantiene tamaño flexible */
+    max-width: 300px; /* Ancho máximo por opción */
+    min-height: 400px; /* Altura mínima */
+    box-sizing: border-box; /* Incluye padding en el cálculo de dimensiones */
+}
+
+
+/* Video de cada opción */
+.option video {
+    width: 220px;                 /* Tamaño fijo del video */
+    height: 220px;                /* Tamaño fijo del video */
+    cursor: pointer;              /* Cambia el cursor al pasar */
+    border: 2px solid transparent; /* Borde inicial */
+    transition: transform 0.2s ease, border 0.3s ease; /* Efectos */
+    transform: scale(1);          /* Sin escalado inicial */
+    margin-bottom: 10px;          /* Espacio entre video y texto */
+}
+
+/* Efecto hover para los videos */
+.option video:hover {
+    transform: scale(1.05);       /* Escala el video al pasar el ratón */
+    border: 5px solid #408d36;   /* Borde verde */
+}
+
+/* Clase seleccionada */
+.option video.selected {
+    border: 5px solid #408d36;
+}
+
+/* Texto debajo del video */
+.option p {
+    font-size: clamp(15px, 1.3vw, 20px); /* Reduce el tamaño del texto */
+    font-weight: 300; /* Mantiene el grosor definido */
+    width: 100%;      /* Asegura que ocupe todo el ancho disponible */
+    margin: 0;        /* Elimina el margen por defecto */
+    padding: 5px 0;   /* Reduce el espacio interno para consistencia */
+    min-height: 50px; /* Altura mínima ajustada */
+    display: flex;    /* Flexbox para centrar el texto */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    text-align: center; /* Asegura el texto centrado */
+}
+
+
+/* Alineación del radio button */
+.option input[type="radio"] {
+    margin-bottom: 10px; /* Espacio entre el botón y los demás elementos */
+}
+
+
+/* Contenedor del botón */
+/* Contenedor de los botones */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los botones a los extremos */
+    position: fixed; /* Fija el contenedor de botones */
+    bottom: 5%; /* Espacio desde el fondo */
+    left: 2%; /* Asegura que el contenedor tenga un margen a la izquierda */
+    right:2%; /* Asegura que el contenedor tenga un margen a la derecha */
+    z-index: 10; /* Asegura que se quede por encima de otros elementos */
+    height: 5%;
+}
+
+/* Estilo para el botón ATRÁS */
+.buttonatras {
+    background-color: #F92420;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    width: 14%; /* Proporcional al contenedor */
+    height: 155%;
+    font-size: 1.5rem; /* Tamaño relativo a la fuente raíz */
+    font-family: "Baloo Thambi 2", sans-serif;
+    transition: transform 0.2s ease;
+    font-weight: 800;
+    cursor: pointer; /* Indicador de clic */
+}
+
+/* Estilo para el botón SIGUIENTE */
+.button {
+    background-color: #408d36;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    width: 15%; /* Proporcional al contenedor */
+    height: 155%;
+    font-size: 1.5rem; /* Tamaño relativo a la fuente raíz */
+    font-family: "Baloo Thambi 2", sans-serif;
+    transition: transform 0.2s ease;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+
+#nextButton:disabled {
+    background-color: #a9a9a9; /* Color de fondo gris */
+    color: #ffffff; /* Color del texto */
+    cursor: not-allowed; /* Cambia el cursor a "no permitido" */
+    opacity: 0.6; /* Reduce la opacidad */
+    transform: none; /* Elimina transformaciones (como escalado en hover) */
+}
+
+#nextButton:hover:disabled {
+    background-color: #a9a9a9; /* Asegúrate de que no cambie el color en hover */
+    transform: none; /* Elimina el escalado */
+}
+/* Efecto hover para los botones */
+.button:hover,
+.buttonatras:hover {
+    transform: scale(1.05);
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    .options-container {
+        flex-direction: column; /* Cambia la disposición a una columna */
+        gap: 0; /* Reduce el espacio entre elementos */
+        padding-left: 5%; /* Ajusta el espacio a la izquierda */
+        width: 90%; /* Usa más espacio horizontal */
+    }
+
+    .option video {
+        width: 180px; /* Reduce el tamaño de los videos */
+        height: 180px; /* Reduce el tamaño de los videos */
+    }
+
+    .button {
+        width: 150px; /* Ajusta el ancho del botón */
+        height: 40px; /* Ajusta la altura del botón */
+        font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+    }
+
+    .button-container {
+        flex-direction: column; /* Cambia a disposición vertical */
+        align-items: center; /* Centra los botones */
+        gap: 10px; /* Espacio entre botones */
+    }
+}
+
+/* Ajustes para pantallas medianas (tabletas) */
+@media screen and (max-width: 1024px) {
+    -container {
+        gap: 0 /* Ajusta el espacio entre las opciones */
+        padding-left: 7%;
+        width: 80%;
+    }
+
+    .option video {
+        width: 200px;
+        height: 200px;
+    }
+
+    .button {
+        width: 180px;
+        height: 45px;
+        font-size: 1.4em;
+    }
+}
+
+
+/*barra de progreso*/
+
+.slider-container2 {
+    position: fixed;           /* Fijar en pantalla */
+    bottom: 40px;              /* A 40px del borde inferior (ajustable) */
+    left: 50%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    width: 100%;
+    max-width: 800px;          /* Opcional, para que no se estire demasiado */
+    z-index: -50;             /* Para que quede por encima de otros elementos */
+    text-align: center;
+    background: white;         /* Fondo opcional si quieres que no se mezcle con el contenido */
+    padding: 10px 0;           /* Espaciado opcional */
+}
+
+
+.slider2 {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 40px;
+    background: linear-gradient(to right, #4CAF50 0%, #ddd 0%);
+    border-radius: 20px;
+    outline: none;
+    margin: 40px auto 20px;
+    display: block;
+    transition: background 0.5s ease;
+}
+
+.slider2::-webkit-slider-thumb {
+      display: none;
+}
+
+.slider2::-moz-range-thumb {
+    width: 50px;
+    height: 50px;
+    background: #4CAF50;
+    cursor: default;
+    border-radius: 50%;
+    border: none;
+}
+/*barra de progreso*/
+
+.slider-container2 {
+    position: fixed;           /* Fijar en pantalla */
+    bottom: 40px;              /* A 40px del borde inferior (ajustable) */
+    left: 50%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    width: 100%;
+    max-width: 800px;          /* Opcional, para que no se estire demasiado */
+    z-index: 0;             /* Para que quede por encima de otros elementos */
+    text-align: center;
+    background: white;         /* Fondo opcional si quieres que no se mezcle con el contenido */
+    padding: 10px 0;           /* Espaciado opcional */
+}
+
+
+.slider2 {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 40px;
+    background: linear-gradient(to right, #4CAF50 0%, #ddd 0%);
+    border-radius: 20px;
+    outline: none;
+    margin: 40px auto 20px;
+    display: block;
+    transition: background 0.5s ease;
+}
+
+.slider2::-webkit-slider-thumb {
+      display: none;
+}
+
+.slider2::-moz-range-thumb {
+    width: 50px;
+    height: 50px;
+    background: #4CAF50;
+    cursor: default;
+    border-radius: 50%;
+    border: none;
+}
+
+/* Asegura que las opciones de satisfacción se vean como botones/tarjetas limpias */
+.options-container {
+    display: flex;
+    width: 100%;
+    max-width: 800px; /* Para que no se estiren demasiado en pantallas gigantes */
+    margin: 0 auto 40px auto;
+}
+
+.option {
+    background: white;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 18px 25px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+/* El color verde cuando se selecciona la opción */
+.option.selected {
+    border-color: #38752F !important;
+    background-color: #F0FDF4 !important; /* Fondo verde muy sutil */
+}
+
+.option:hover {
+    border-color: #38752F;
+    transform: translateY(-2px); /* Pequeño efecto flotante */
+}
+
+.slider-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 40px;
+            background: linear-gradient(to right, #4CAF50 50%, #ddd 50%);
+            background-size: 100% 100%;
+            border-radius: 20px;
+            outline: none;
+            margin: 40px auto 60px;
+            display: block;
+            transition: background 0.5s ease;  /* Transición más suave */
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0 auto;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .labels span {
+            position: absolute;
+            top: -35px;
+            transform: translateX(-50%);
+        }
+
+        .labels span:nth-child(1) {
+            left: 0%;
+        }
+
+        .labels span:nth-child(2) {
+            left: 25%;
+        }
+
+        .labels span:nth-child(3) {
+            left: 50%;
+        }
+
+        .labels span:nth-child(4) {
+            left: 75%;
+        }
+
+        .labels span:nth-child(5) {
+            left: 100%;
+        }
+
+
+        
