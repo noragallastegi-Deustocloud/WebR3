@@ -1,4 +1,0 @@
-date,start,name,school,age,r1,r2,r3,r4,r5,r6
-"2025-10-29","20:57:41","Nora ","Deusto","20","El mismo tiempo","Menos tiempo","Menos tiempo","Menos tiempo","Menos tiempo","Menos tiempo"
-"2025-10-29","21:09:15","Nora","Deusto","21","Más tiempo","El mismo tiempo","Menos tiempo","Menos tiempo","Menos tiempo","Menos tiempo"
-"2025-10-29","21:10:26","Javier","Deusto","20","El mismo tiempo","Menos tiempo","Menos tiempo","Menos tiempo","Menos tiempo","Menos tiempo"
