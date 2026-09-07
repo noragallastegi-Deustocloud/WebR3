@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .body {
+            text-align: left;
+        }
+
+        .button{
+            align-self: self-end;
+        }
+        .button a{
+            color: white; /* Cambia el color del texto del botón a blanco */
+            text-decoration: none; /* Elimina la línea debajo del enlace */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div> 
+        <div class="second-text"> 
+            <h1 class="encabezado1">¿POR QUÉ TE HACEMOS ESTE CUESTIONARIO? </h1>
+            <p class="body" style="line-height: 2;">Vamos a hacerte un <b>cuestionario </b>sobre el comportamiento de las <b>planarias</b>. Te hacemos estas preguntas  con el objetivo de saber dónde <b>fallamos</b> y dónde <b>acertamos</b>.</p>
+            <br>
+            <p class="body" style="line-height: 2;">Esto nos permitirá saber dónde podemos <b>mejorar</b> para el futuro.
+            </p>  
+        </div>
+        <div class="options-container" >
+            <img src="Recursos\Preguntas\efficacy_17237567.png" style="width: 30%;">
+        </div>
+        <div class="button-container" >
+            <button class="buttonatras" onclick="goToPreviousPage()">ATRÁS</button>
+            <button class="button" style="align-self:flex-start;"> <a href="4_Pregunta1.html">COMENZAR</a></button>
+        </div>
+        
+
+    </div>
+    
+    <script>
+        // Función para ir a la página anterior en el historial del navegador
+        function goToPreviousPage() {
+            window.history.back(); // Retrocede a la página anterior
+        }
+    </script>
+</body>
+</html>

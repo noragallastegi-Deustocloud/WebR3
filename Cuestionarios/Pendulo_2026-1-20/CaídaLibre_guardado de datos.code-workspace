@@ -1,0 +1,11 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        // CORRECCIÓN: Usar doble barra invertida
+        "php.executablePath": "C:\\xampp\\php\\php.exe" 
+    }
+}

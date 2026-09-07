@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto R3_Cuestionario</title>
+    <link rel="icon" type="image/png" href="imagenes/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="logos" style="align-items: right;">
+            <img src="Recursos/Logos/R3.png" class="R3Logo2"/>
+        </div>
+        <div class="second-text">
+            <h1 class="encabezado1">ANTES DE COMENZAR...</h1>
+        <form id="sheetdb-form">
+            <div class="form-group">
+                <label for="nombre">Código</label>
+                <input type="text" id="nombre" name="data[nombre]" maxlength="7" pattern="[A-Za-z0-9]{7}" required placeholder="Rellena con el código " oninput="validarCodigo()">
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="data[edad]" maxlength="2" min="0" max="99" placeholder="Introduce tu edad" oninput="validarEdad()">
+            </div>
+            
+            <div class="form-group">
+                <label for="colegio">Colegio</label>
+                <input type="text" id="colegio" name="data[colegio]" placeholder="Introduce el nombre de tu colegio">
+            </div>
+
+            <div class="button-container">
+                <button class="button" type="button" onclick="guardarDatos()">SIGUIENTE</button>
+            </div>
+        </form>
+        </div>
+    
+        <script>
+            function validarCodigo() {
+                var input = document.getElementById("nombre");
+                var codigo = input.value;
+                if (!/^[A-Za-z0-9]{7}$/.test(codigo)) {
+                    input.setCustomValidity('El código debe ser de 7 caracteres alfanuméricos.');
+                } else {
+                    input.setCustomValidity('');
+                }
+            }
+
+            function validarEdad() {
+                var edadInput = document.getElementById("edad");
+                if (edadInput.value.length > 2) {
+                    edadInput.value = edadInput.value.slice(0, 2); // Limitar a 2 dígitos
+                }
+            }
+
+            function guardarDatos() {
+                var nombreInput = document.getElementById('nombre').value;
+                var edadInput = document.getElementById('edad').value;
+                var colegioInput = document.getElementById('colegio').value;
+
+                if (nombreInput && edadInput && colegioInput) {
+                    var fecha = new Date();
+                    var fechaFormateada = fecha.toISOString().split('T')[0]; // Fecha (yyyy-mm-dd)
+                    var horaFormateada = fecha.toTimeString().split(' ')[0]; // Hora (hh:mm:ss)
+
+                    // Guardar en sessionStorage
+                    sessionStorage.setItem('nombre', nombreInput);
+                    sessionStorage.setItem('edad', edadInput);
+                    sessionStorage.setItem('colegio', colegioInput);
+                    sessionStorage.setItem('fecha', fechaFormateada);
+                    sessionStorage.setItem('comienzo', horaFormateada);
+
+                    // Redirigir a la siguiente página
+                    window.location.href = '2_QueEsPlanaria.html';
+                } else {
+                    alert('Por favor, completa todos los campos antes de continuar.');
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
+
+
