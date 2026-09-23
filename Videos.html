@@ -231,14 +231,16 @@
           <a id="inicio-mov" href="index.html" class="nav-link-movil">Inicio</a>
           <a id="escuelas-mov" href="mapa.html" class="nav-link-movil">Escuelas</a>
           <a id="noticias-mov" href="noticias.html" class="nav-link-movil">Noticias</a>
-          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Recursos educativos</a>
+          <a id="videos-mov" href="Videos.html" class="nav-link-movil">Videos</a>
+          <a id="videos-mov" href="Libros.html" class="nav-link-movil">Libros</a>
           <a id="cuestionarios-mov" href="Cuestionarios.html" class="nav-link-movil">Cuestionarios</a>
           <div data-type-role="flex-row" id="ihn2tg" class="gjs-plg-flex-row">
             <div data-type-role="flex-column" id="if5sw5" class="gjs-plg-flex-column">
               <a id="inicio-desk" href="index.html"class="nav-link-desk">Inicio</a>
               <a id="escuelas-desk" href="mapa.html" class="nav-link-desk">Escuelas</a>
               <a id="noticias-desk" href="noticias.html"class="nav-link-desk">Noticias</a>
-              <a id="videos-desk" href="Videos.html" class="nav-link-desk active">Recursos educativos</a>
+              <a id="videos-desk" href="Videos.html" class="nav-link-desk active">Videos</a>
+              <a id="videos-desk" href="Libros.html" class="nav-link-desk">Libros</a>
               <a id="cuestionarios-desk" href="Cuestionarios.html" class="nav-link-desk">Cuestionarios</a>
             </div>
           </div>
@@ -248,25 +250,20 @@
   </div>
 
     <header class="hero-videos">
-        <h1>Centro de Recursos R3</h1>
-        <p>Explora todo nuestro contenido educativo interactivo: videos explicativos, guías descargables y lecciones paso a paso.</p>
+        <h1>Videotutoriales</h1>
+        <p>Aprende a dar tus primeros pasos en el proyecto y visualiza cómo llevar a cabo cada experimento en el aula.</p>
     </header>
 
-    <div class="main-tabs-container">
-        <button class="main-tab active" onclick="cambiarSeccion('videos')">🎬 Videos</button>
-       <!--  <button class="main-tab" onclick="cambiarSeccion('lecciones')">📝 Lecciones y Guías</button> -->
-        <button class="main-tab" onclick="cambiarSeccion('libros')">📚 Libros Anuales</button>
-    </div>
+
 
     <div id="seccion-videos" class="content-section active">
         <section class="container">
-            <h2 class="section-title">Videos del Proyecto R3</h2>
             <div id="filtros" class="filter-container">
-                <button class="filter-btn active" onclick="filtrarVideos('todo')"><span></span>Todos</button>
-                <button class="filter-btn" onclick="filtrarVideos('proyecto')">📁 El Proyecto</button>
+                <button class="filter-btn active" onclick="filtrarVideos('proyecto')">📁 Sobre el Proyecto</button>
                 <button class="filter-btn" onclick="filtrarVideos('robotica')">🤖 Robótica</button>
                 <button class="filter-btn" onclick="filtrarVideos('fisica')">⚡ Física</button>
                 <button class="filter-btn" onclick="filtrarVideos('quimica')">🧪 Química/Biología</button>
+                <button class="filter-btn" onclick="filtrarVideos('Jon')">🖥️ Videos de Jon</button>
             </div>
 
             <div class="grid-general">
@@ -304,7 +301,7 @@
                     </div>
                     <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Distintos Experimentos Remotos</h4></div>
                 </div>
-                <div class="card filter-item robotica" onclick="abrirVideo('26amixghtco', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('26amixghtco', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/26amixghtco/maxresdefault.jpg" class="video-thumbnail" alt="Experimento introductorio">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -313,7 +310,7 @@
                 </div>
 
                 <!-- Experimento 0 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('bUOfGxCE5qE', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('bUOfGxCE5qE', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/bUOfGxCE5qE/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 0">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -322,7 +319,7 @@
                 </div>
 
                 <!-- Experimento 1 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('Ew4j4lLw-7w', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('Ew4j4lLw-7w', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/Ew4j4lLw-7w/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 1">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -331,7 +328,7 @@
                 </div>
 
                 <!-- Experimento 2 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('TYhPcq7ZEEo', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('TYhPcq7ZEEo', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/TYhPcq7ZEEo/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 2">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -340,7 +337,7 @@
                 </div>
 
                 <!-- Experimento 3 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('NeFKceNalLc', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('NeFKceNalLc', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/NeFKceNalLc/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 3">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -349,7 +346,7 @@
                 </div>
 
                 <!-- Experimento 4 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('EVOnLoZYJzo', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('EVOnLoZYJzo', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/EVOnLoZYJzo/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 4">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -358,7 +355,7 @@
                 </div>
 
                 <!-- Experimento 5 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('oo0HmXbMNqE', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('oo0HmXbMNqE', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/oo0HmXbMNqE/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 5">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -367,7 +364,7 @@
                 </div>
 
                 <!-- Experimento 6 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('vuKzCwfeJYU', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('vuKzCwfeJYU', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/vuKzCwfeJYU/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 6">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -376,7 +373,7 @@
                 </div>
 
                 <!-- Experimento 7 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('sh3dRgEuv68', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('sh3dRgEuv68', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/sh3dRgEuv68/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 7">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -385,7 +382,7 @@
                 </div>
 
                 <!-- Experimento 8 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('RxCvyIM4SL4', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('RxCvyIM4SL4', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/RxCvyIM4SL4/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 8">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -394,7 +391,7 @@
                 </div>
 
                 <!-- Experimento 9 -->
-                <div class="card filter-item robotica" onclick="abrirVideo('vEaWGQk7K8A', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('vEaWGQk7K8A', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/vEaWGQk7K8A/maxresdefault.jpg" class="video-thumbnail" alt="Experimento 9">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -403,7 +400,7 @@
                 </div>
 
                 <!-- Experimento Final -->
-                <div class="card filter-item robotica" onclick="abrirVideo('9acU1mCJew0', true)">
+                <div class="card filter-item Jon" onclick="abrirVideo('9acU1mCJew0', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/9acU1mCJew0/maxresdefault.jpg" class="video-thumbnail" alt="Experimento Final">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -420,7 +417,7 @@
                     <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Cómo Usar el Experimento en el Aula</h4></div>
                 </div>
 
-                <div class="card filter-item fisica" onclick="abrirVideo('CkVsuuoNH1Q', true)">
+                <!-- <div class="card filter-item Jon" onclick="abrirVideo('CkVsuuoNH1Q', true)">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/CkVsuuoNH1Q/maxresdefault.jpg" class="video-thumbnail" alt="Péndulo de Galileo con el método científico">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -429,49 +426,49 @@
                         <span class="tag tag-exp">Física</span>
                         <h4 class="card-title">Péndulo de Galileo con el método científico: video de profesores - R3 Deusto</h4>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="card filter-item fisica" onclick="abrirVideo('gLlLx5lCG4U', true)">
+                <div class="card filter-item fisica" onclick="window.open('https://www.youtube.com/watch?v=gLlLx5lCG4U', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/gLlLx5lCG4U/maxresdefault.jpg" class="video-thumbnail" alt="Flotabilidad y Arquímedes">
+                        <img src="imagenes\Recursos\flotabilidad.png" class="video-thumbnail" alt="Flotabilidad y Arquímedes">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Flotabilidad y Arquímedes</h4></div>
                 </div>
 
-                <div class="card filter-item fisica" onclick="abrirVideo('K806DqM1Gi8', true)">
+                <div class="card filter-item fisica" onclick="window.open('https://www.youtube.com/watch?v=K806DqM1Gi8', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/K806DqM1Gi8/maxresdefault.jpg" class="video-thumbnail" alt="Muelle">
+                        <img src="imagenes\Recursos\muelle.png" class="video-thumbnail" alt="Muelle">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Experimento con Muelle</h4></div>
                 </div>
 
-                <div class="card filter-item fisica" onclick="abrirVideo('4xI19iM74cA', true)">
+                <div class="card filter-item fisica" onclick="window.open('https://www.youtube.com/watch?v=4xI19iM74cA', '_blank')"> 
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/4xI19iM74cA/maxresdefault.jpg" class="video-thumbnail" alt="Péndulo de Galileo">
+                        <img src="imagenes\Recursos\Pendulo.jpg" class="video-thumbnail" alt="Péndulo de Galileo">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Péndulo de Galileo</h4></div>
                 </div>
 
-                <div class="card filter-item fisica" onclick="abrirVideo('wv4JablHsDY', true)">
+                <div class="card filter-item fisica" onclick="window.open('https://www.youtube.com/watch?v=wv4JablHsDY', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/wv4JablHsDY/maxresdefault.jpg" class="video-thumbnail" alt="Bombillas y AC">
+                        <img src="imagenes\Recursos\bombilla.jpg" class="video-thumbnail" alt="Bombillas y AC">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Bombillas y Corriente Alterna</h4></div>
                 </div>
 
-                <div class="card filter-item fisica" onclick="abrirVideo('hChLVjQ4WMc', true)">
+                <div class="card filter-item fisica" onclick="window.open('https://www.youtube.com/watch?v=hChLVjQ4WMc', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/hChLVjQ4WMc/maxresdefault.jpg" class="video-thumbnail" alt="Circuitos básicos en VISIR">
+                        <img src="imagenes\Recursos\Visir.png" class="video-thumbnail" alt="Circuitos básicos en VISIR">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Circuitos básicos en VISIR</h4></div>
                 </div>
 
-                <div class="card filter-item robotica" onclick="abrirVideo('Kf8ql8TOfHM', true)">
+                <div class="card filter-item robotica" onclick="window.open('https://www.youtube.com/watch?v=Kf8ql8TOfHM', '_blank')">
                     <div class="video-wrapper">
                         <img src="https://img.youtube.com/vi/Kf8ql8TOfHM/maxresdefault.jpg" class="video-thumbnail" alt="Robotica Arduino">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -479,27 +476,26 @@
                     <div class="card-info"><span class="tag tag-exp">Robótica</span><h4 class="card-title">Robótica con Blockly y Arduino</h4></div>
                 </div>
 
-                
 
-                <div class="card filter-item quimica" onclick="abrirVideo('JR6P0iqHV0g', true)">
+                <div class="card filter-item quimica" onclick="window.open('https://www.youtube.com/watch?v=JR6P0iqHV0g', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/JR6P0iqHV0g/maxresdefault.jpg" class="video-thumbnail" alt="Planarias bebidas">
+                        <img src="imagenes\Recursos\Planarias.jpeg" class="video-thumbnail" alt="Planarias bebidas">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Biología</span><h4 class="card-title">Planarias y bebidas energéticas</h4></div>
                 </div>
 
-                <div class="card filter-item quimica" onclick="abrirVideo('ZdpWWV156S8', true)">
+                <div class="card filter-item quimica" onclick="window.open('https://www.youtube.com/watch?v=ZdpWWV156S8', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/ZdpWWV156S8/maxresdefault.jpg" class="video-thumbnail" alt="Radiactividad">
+                        <img src="imagenes\Recursos\Radiactividad.jpg" class="video-thumbnail" alt="Radiactividad">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Química</span><h4 class="card-title">Radiactividad</h4></div>
                 </div>
 
-                <div class="card filter-item quimica" onclick="abrirVideo('xsDsMMZtQ9c', true)">
+                <div class="card filter-item quimica" onclick="window.open('https://www.youtube.com/watch?v=xsDsMMZtQ9c', '_blank')">
                     <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/xsDsMMZtQ9c/maxresdefault.jpg" class="video-thumbnail" alt="Química">
+                        <img src="imagenes\Recursos\quimica.jpg" class="video-thumbnail" alt="Química">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag tag-exp">Química</span><h4 class="card-title">Experimentos de Química</h4></div>
@@ -578,40 +574,7 @@
         </section>
     </div> -->
 
-    <div id="seccion-libros" class="content-section">
-        <section class="container">
-            <h2 class="section-title">Materiales Didácticos Anuales</h2>
-            
-            <div class="grid-general" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-                
-                <a href="https://drive.google.com/file/d/1rhSLGS1fFIV7758axFT947kJvtsnk_Hb/view?usp=sharing" target="_blank" class="card">
-                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2025-2026.png" alt="Libro 2024-2025"></div>
-                    <div class="card-info"><span class="tag">Nuevo</span><h4 class="card-title">Materiales 2025/2026</h4><div class="btn-descargar">Abrir PDF</div></div>
-                </a>
-                
-                <a href="https://drive.google.com/file/d/1-CVWYnad2hhbutT6yFfBBJvPYa15b-8r/view?usp=drive_link" target="_blank" class="card">
-                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2024-2025.jpg" alt="Libro 2024-2025"></div>
-                    <div class="card-info"><h4 class="card-title">Materiales 2024/2025</h4><div class="btn-descargar">Abrir PDF</div></div>
-                </a>
 
-                <a href="https://drive.google.com/file/d/1Yqmpx9eGbffoKsMIrDlcCX3Mt4lfmJ2E/view" target="_blank" class="card">
-                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2023-2024.png" alt="Libro 2023-2024"></div>
-                    <div class="card-info"><h4 class="card-title">Materiales 2023/2024</h4><div class="btn-descargar">Abrir PDF</div></div>
-                </a>
-
-                <a href="https://drive.google.com/file/d/1VsCV6oxFDzIGsZh0mFmfiK7vkXoc5RCv/view?usp=sharing" target="_blank" class="card">
-                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2022-2023.png" alt="Libro 2022-2023"></div>
-                    <div class="card-info"><h4 class="card-title">Materiales 2022/2023</h4><div class="btn-descargar">Abrir PDF</div></div>
-                </a>
-
-                <a href="https://drive.google.com/file/d/1Hqk4D5Fe5PqApr2SeoJFEdx1sBL1GXbs/view?usp=sharing" target="_blank" class="card">
-                    <div class="book-thumbnail"><img src="imagenes\Recursos\MT_2021-2022.png" alt="Libro 2021-2022"></div>
-                    <div class="card-info"><h4 class="card-title">Materiales 2021/2022</h4><div class="btn-descargar">Abrir PDF</div></div>
-                </a>
-
-            </div>
-        </section>
-    </div>
 
     <div id="videoModal" class="video-modal-overlay" onclick="cerrarVideoFuera(event)">
         <div class="video-modal-content">
@@ -753,29 +716,8 @@
 
         // Al cargar la página, ejecutar el filtro "todo"
         document.addEventListener('DOMContentLoaded', function() {
-            filtrarVideos('todo');
+            filtrarVideos('proyecto');
         });
     </script>
-    <div id="chat-widget">
-  <div id="chat-box">
-    <div id="chat-header">
-      <img src="imagenes/logo2.png" alt="avatar" id="chat-avatar" style="background-color: white;">
-      <span id="chat-title">Asistente IA ProyectoR3</span>
-      <button id="chat-close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <div id="chat-messages"></div>
-    <div id="chat-input-area">
-      <input type="text" id="userMessage" placeholder="Escribe algo..." />
-      <button id="send-btn" onclick="sendMessage()">
-        </button>
-    </div>
-  </div>
-  <div id="chat-button">
-    </div>
-</div>
 </body>
 </html>
