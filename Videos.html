@@ -262,24 +262,23 @@
             <div id="filtros" class="filter-container">
                 <button class="filter-btn active" onclick="filtrarVideos('proyecto')"> Sobre el Proyecto</button>
                 <button class="filter-btn" onclick="filtrarVideos('ExpR3')"> Experimentos R3</button>
-                <button class="filter-btn" onclick="filtrarVideos('OtroExp', 'otro-general')"> Otros Experimentos</button>
-            </div>
-
-            <!-- SUBMENÚ (Solo visible cuando se pulsa "Otros Experimentos") -->
-            <div id="subfiltros-otro" class="filter-container" style="display: none; margin-top: -15px; margin-bottom: 30px; gap: 10px; justify-content: center;">
-                <button class="filter-btn sub-btn active" onclick="filtrarSubVideos('otro-general')"> General</button>
-                <button class="filter-btn sub-btn" onclick="filtrarSubVideos('otro-robotica')">Curso de Robótica</button>
+                <button class="filter-btn" onclick="filtrarVideos('OtroExp', 'otro-general')"> Curso Robótica R3</button>
             </div>
 
             <div class="grid-general">
-                
-                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4', false)">
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('MvW9UotdnN4', true)">
                     <div class="video-wrapper">
-                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4#t=1" type="video/mp4"></video>
+                        <img src="https://img.youtube.com/vi/MvW9UotdnN4/hqdefault.jpg" class="video-thumbnail" alt="Vídeo del proyecto">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
-                    <div class="card-info"><span class="tag">General</span><h4 class="card-title">Presentación del Curso Online</h4></div>
+                    <div class="card-info">
+                        <span class="tag">General</span>
+                        <h4 class="card-title">Presentación Proyecto R3 | Octubre 2026</h4>
+                    </div>
                 </div>
+                
+                
 
                 <!-- <div class="card filter-item OtroExp otro-general" onclick="abrirVideo('imagenes/Recursos/Bloque 1_1 Proyecto R3.mp4', false)">
                     <div class="video-wrapper">
@@ -288,14 +287,22 @@
                     </div>
                     <div class="card-info"><span class="tag">General</span><h4 class="card-title">Descripción del Proyecto R3</h4></div>
                 </div>
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 0 Presentacion del Curso R3.mp4#t=1" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">General</span><h4 class="card-title">Presentación del Curso Online</h4></div>
+                </div>
+                -->
 
-                <div class="card filter-item OtroExp otro-general" onclick="abrirVideo('imagenes/Recursos/Bloque 1_2 Cultura de experimentacion remota.mp4', false)">
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque 1_2 Cultura de experimentacion remota.mp4', false)">
                     <div class="video-wrapper">
                         <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque 1_2 Cultura de experimentacion remota.mp4#t=2" type="video/mp4"></video>
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
                     <div class="card-info"><span class="tag">General</span><h4 class="card-title">Cultura de Experimentación Remota</h4></div>
-                </div> -->
+                </div> 
 
         
 
@@ -306,6 +313,15 @@
                     </div>
                     <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Distintos Experimentos Remotos</h4></div>
                 </div>
+
+                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque_3.mp4', false)">
+                    <div class="video-wrapper">
+                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque_3.mp4#t=2" type="video/mp4"></video>
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Cómo Usar el Experimento en el Aula</h4></div>
+                </div>
+
 
                 <div class="card filter-item OtroExp otro-robotica" onclick="abrirVideo('26amixghtco', true)">
                     <div class="video-wrapper">
@@ -415,13 +431,7 @@
                 </div>
 
 
-                <div class="card filter-item proyecto" onclick="abrirVideo('imagenes/Recursos/Bloque_3.mp4', false)">
-                    <div class="video-wrapper">
-                        <video class="video-thumbnail" preload="metadata" muted><source src="imagenes/Recursos/Bloque_3.mp4#t=2" type="video/mp4"></video>
-                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="card-info"><span class="tag">Implementación</span><h4 class="card-title">Cómo Usar el Experimento en el Aula</h4></div>
-                </div>
+                
 
                 <!-- <div class="card filter-item Jon" onclick="abrirVideo('CkVsuuoNH1Q', true)">
                     <div class="video-wrapper">
@@ -434,54 +444,29 @@
                     </div>
                 </div> -->
 
-                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=gLlLx5lCG4U', '_blank')">
+                <!-- Péndulo de Galileo -->
+                <div class="card filter-item ExpR3" onclick="abrirVideo('CkVsuuoNH1Q', true)">
                     <div class="video-wrapper">
-                        <img src="imagenes\Recursos\flotabilidad.png" class="video-thumbnail" alt="Flotabilidad y Arquímedes">
+                        <img src="https://img.youtube.com/vi/CkVsuuoNH1Q/hqdefault.jpg" class="video-thumbnail" alt="Pendulo de galileo">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
-                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Flotabilidad y Arquímedes</h4></div>
+                    <div class="card-info">
+                        <span class="tag tag-exp">Física</span>
+                        <h4 class="card-title">Péndulo de Galileo</h4>
+                    </div>
                 </div>
 
-                <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=K806DqM1Gi8', '_blank')">
+                <!-- Caída Libre -->
+                <div class="card filter-item ExpR3" onclick="abrirVideo('7LHP0S38-SQ', true)">
                     <div class="video-wrapper">
-                        <img src="imagenes\Recursos\muelle.png" class="video-thumbnail" alt="Muelle">
+                        <img src="https://img.youtube.com/vi/7LHP0S38-SQ/hqdefault.jpg" class="video-thumbnail" alt="Caída libre">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
                     </div>
-                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Experimento con Muelle</h4></div>
-                </div>
-
-                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=4xI19iM74cA', '_blank')"> 
-                    <div class="video-wrapper">
-                        <img src="imagenes\Recursos\Pendulo.jpg" class="video-thumbnail" alt="Péndulo de Galileo">
-                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="card-info">
+                        <span class="tag tag-exp">Física</span>
+                        <h4 class="card-title">Caída libre</h4>
                     </div>
-                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Péndulo de Galileo</h4></div>
                 </div>
-
-                <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=wv4JablHsDY', '_blank')">
-                    <div class="video-wrapper">
-                        <img src="imagenes\Recursos\bombilla.jpg" class="video-thumbnail" alt="Bombillas y AC">
-                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Bombillas y Corriente Alterna</h4></div>
-                </div>
-
-                <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=hChLVjQ4WMc', '_blank')">
-                    <div class="video-wrapper">
-                        <img src="imagenes\Recursos\Visir.png" class="video-thumbnail" alt="Circuitos básicos en VISIR">
-                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Circuitos básicos en VISIR</h4></div>
-                </div>
-
-                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=Kf8ql8TOfHM', '_blank')">
-                    <div class="video-wrapper">
-                        <img src="https://img.youtube.com/vi/Kf8ql8TOfHM/maxresdefault.jpg" class="video-thumbnail" alt="Robotica Arduino">
-                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="card-info"><span class="tag tag-exp">Robótica</span><h4 class="card-title">Robótica con Blockly y Arduino</h4></div>
-                </div>
-
 
                 <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=JR6P0iqHV0g', '_blank')">
                     <div class="video-wrapper">
@@ -491,7 +476,58 @@
                     <div class="card-info"><span class="tag tag-exp">Biología</span><h4 class="card-title">Planarias y bebidas energéticas</h4></div>
                 </div>
 
-                <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=ZdpWWV156S8', '_blank')">
+                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=gLlLx5lCG4U', '_blank')">
+                    <div class="video-wrapper">
+                        <img src="imagenes\Recursos\flotabilidad.png" class="video-thumbnail" alt="Flotabilidad y Arquímedes">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Flotabilidad y Arquímedes</h4></div>
+                </div>
+
+                <!-- <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=K806DqM1Gi8', '_blank')">
+                    <div class="video-wrapper">
+                        <img src="imagenes\Recursos\muelle.png" class="video-thumbnail" alt="Muelle">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Experimento con Muelle</h4></div>
+                </div>
+ -->
+                <!-- <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=4xI19iM74cA', '_blank')"> 
+                    <div class="video-wrapper">
+                        <img src="imagenes\Recursos\Pendulo.jpg" class="video-thumbnail" alt="Péndulo de Galileo">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Péndulo de Galileo</h4></div>
+                </div> -->
+
+                <!-- <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=wv4JablHsDY', '_blank')">
+                    <div class="video-wrapper">
+                        <img src="imagenes\Recursos\bombilla.jpg" class="video-thumbnail" alt="Bombillas y AC">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Bombillas y Corriente Alterna</h4></div>
+                </div> -->
+
+                <!-- <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=hChLVjQ4WMc', '_blank')">
+                    <div class="video-wrapper">
+                        <img src="imagenes\Recursos\Visir.png" class="video-thumbnail" alt="Circuitos básicos en VISIR">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Física</span><h4 class="card-title">Circuitos básicos en VISIR</h4></div>
+                </div> -->
+
+                <!-- <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=Kf8ql8TOfHM', '_blank')">
+                    <div class="video-wrapper">
+                        <img src="https://img.youtube.com/vi/Kf8ql8TOfHM/maxresdefault.jpg" class="video-thumbnail" alt="Robotica Arduino">
+                        <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="card-info"><span class="tag tag-exp">Robótica</span><h4 class="card-title">Robótica con Blockly y Arduino</h4></div>
+                </div> -->
+
+
+                
+
+                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=ZdpWWV156S8', '_blank')">
                     <div class="video-wrapper">
                         <img src="imagenes\Recursos\Radiactividad.jpg" class="video-thumbnail" alt="Radiactividad">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -499,7 +535,7 @@
                     <div class="card-info"><span class="tag tag-exp">Química</span><h4 class="card-title">Radiactividad</h4></div>
                 </div>
 
-                <div class="card filter-item OtroExp otro-general" onclick="window.open('https://www.youtube.com/watch?v=xsDsMMZtQ9c', '_blank')">
+                <div class="card filter-item ExpR3" onclick="window.open('https://www.youtube.com/watch?v=xsDsMMZtQ9c', '_blank')">
                     <div class="video-wrapper">
                         <img src="imagenes\Recursos\quimica.jpg" class="video-thumbnail" alt="Química">
                         <div class="play-overlay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -677,17 +713,9 @@
             let elementos = document.getElementsByClassName("filter-item");
             let subMenu = document.getElementById("subfiltros-otro");
 
-            // 1. Mostrar u ocultar el submenú
-            if (categoria === 'OtroExp') {
-                subMenu.style.display = "flex";
-                // Si entramos a Otros Experimentos, filtramos usando la subcategoría
-                categoria = subcategoria ? subcategoria : 'otro-general';
-            } else {
-                // Si pulsamos Proyecto o ExpR3, escondemos el submenú
-                subMenu.style.display = "none";
-            }
+    
 
-            // 2. Mostrar/Ocultar los vídeos
+            // 1. Mostrar/Ocultar los vídeos
             for (let i = 0; i < elementos.length; i++) {
                 elementos[i].classList.remove("show");
                 if (categoria === 'todo' || elementos[i].classList.contains(categoria)) {
@@ -708,16 +736,6 @@
                 }
             }
 
-            // 4. Resaltar el sub-botón correcto
-            if (categoria.includes('otro-')) {
-                let subBotones = document.getElementById("subfiltros-otro").getElementsByClassName("sub-btn");
-                for (let i = 0; i < subBotones.length; i++) {
-                    subBotones[i].classList.remove("active");
-                    if (subBotones[i].getAttribute('onclick').includes(categoria)) {
-                        subBotones[i].classList.add("active");
-                    }
-                }
-            }
         }
 
         // Función auxiliar para los botones del submenú
